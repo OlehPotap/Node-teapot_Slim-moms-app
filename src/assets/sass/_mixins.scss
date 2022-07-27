@@ -1,0 +1,76 @@
+//этот миксин нужен для сокращения описания медиа-правил.
+//use @include mq(tablet){
+//сюда пишем контент;
+//};
+
+@mixin mq($range) {
+    $mobile: 320px;
+    $tablet: 768px;
+    $desktop: 1280px;
+  
+    @if $range==mobile-only {
+      @media screen and (max-width: #{$tablet - 0.02}) {
+        @content;
+      }
+    } @else if $range==mobile {
+      @media screen and (min-width: $mobile) {
+        @content;
+      }
+    } @else if $range==tablet-only {
+      @media screen and (min-width: $tablet) and (max-width: #{$desktop - 0.02}) {
+        @content;
+      }
+    } @else if $range==tablet {
+      @media screen and (min-width: $tablet) {
+        @content;
+      }
+    } @else if $range==desktop {
+      @media screen and (min-width: $desktop) {
+        @content;
+      }
+    } @else if $range==notDesktop {
+      @media screen and (max-width: #{$desktop - 0.02}) {
+        @content;
+      }
+    } @else if $range==retina {
+      @media screen and (min-device-pixel-ratio: 2),
+        screen and (-moz-min-device-pixel-ratio: 2),
+        screen and (-o-min-device-pixel-ratio: 2/1),
+        screen and (-webkit-min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+        @content;
+      }
+    }
+  }
+  
+  //этот миксин нужен для сокращения повторяющихся списков свойств шрифтов.
+  //добавялем его в класс, в котором нужно описать свойства шрифта
+  //use @include font-style(26px, 900, 1.61, null, $color-white);
+  @mixin font-style(
+    $size: false,
+    $weight: false,
+    $lh: false,
+    $ls: false,
+    $colour: false
+  ) {
+    @if $size {
+      font-size: $size;
+    }
+  
+    @if $weight {
+      font-weight: $weight;
+    }
+  
+    @if $lh {
+      line-height: $lh;
+    }
+  
+    @if $ls {
+      letter-spacing: $ls;
+    }
+  
+    @if $colour {
+      color: $colour;
+    }
+  }

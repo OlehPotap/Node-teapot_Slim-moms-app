@@ -5,15 +5,14 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import './index.scss';
 import App from './App';
-import "modern-normalize";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
-    <App />
+      <App />
     </BrowserRouter>
-   </Provider>
+  </Provider>
   // </React.StrictMode>
 );

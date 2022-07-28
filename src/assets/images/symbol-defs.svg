@@ -1,0 +1,20 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-arrow" viewBox="0 0 32 32">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.2667" d="M29.867 9.6v6.4h-25.6M4.267 16l7.467-7.467M4.267 16l7.467 7.467"></path>
+</symbol>
+<symbol id="icon-calendar" viewBox="0 0 32 32">
+<path fill="#9b9faa" style="fill: var(--color1, #9b9faa)" d="M24 14.4h-3.2v3.2h3.2v-3.2zM17.6 14.4h-3.2v3.2h3.2v-3.2zM11.2 14.4h-3.2v3.2h3.2v-3.2z"></path>
+<path fill="#9b9faa" style="fill: var(--color1, #9b9faa)" d="M27.2 3.2h-1.6v-3.2h-3.2v3.2h-12.8v-3.2h-3.2v3.2h-1.6c-1.776 0-3.184 1.44-3.184 3.2l-0.016 22.4c0 1.767 1.433 3.2 3.2 3.2v0h22.4c1.76 0 3.2-1.44 3.2-3.2v-22.4c0-1.76-1.44-3.2-3.2-3.2zM27.2 28.8h-22.4v-17.6h22.4v17.6z"></path>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path d="M31.555 3.576l-3.133-3.131-12.421 12.421-12.421-12.421-3.133 3.128 12.421 12.427-12.421 12.421 3.133 3.133 12.421-12.421 12.421 12.421 3.133-3.133-12.421-12.421 12.421-12.424z"></path>
+</symbol>
+<symbol id="icon-delete" viewBox="0 0 32 32">
+<path fill="none" stroke="#9b9faa" style="stroke: var(--color1, #9b9faa)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 2.286l27.429 27.429M2.286 29.714l27.429-27.429"></path>
+</symbol>
+<symbol id="icon-add" viewBox="0 0 32 32">
+<path fill="#fff" style="fill: var(--color2, #fff)" d="M25.333 17.333h-8v8h-2.667v-8h-8v-2.667h8v-8h2.667v8h8v2.667z"></path>
+</symbol>
+</defs>
+</svg>

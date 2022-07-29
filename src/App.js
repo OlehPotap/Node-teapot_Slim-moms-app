@@ -1,5 +1,7 @@
-import { Routes, Route, 
-  // Link 
+import {
+  Routes,
+  Route,
+  // Link
 } from "react-router-dom";
 import { lazy } from "react";
 

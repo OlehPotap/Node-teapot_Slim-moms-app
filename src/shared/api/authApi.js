@@ -8,14 +8,14 @@ const addToken = token => {
 
 // Для примера оставил закомментированным некоторый код из материалов которые дал Богдан.
 
-const signup = async (data)=> {
-    // const {data: result} = await axios.post("/users/signup", data);
+const signup = async (owner)=> {
+    // const {owner: result} = await axios.post("/users/signup", owner);
     // addToken(result.token);
     // return result;
 }
 
-const login = async (data) => {
-    // const {data: result} = await axios.post("/users/login", data);
+const login = async (owner) => {
+    // const {owner: result} = await axios.post("/users/login", owner);
     // addToken(result.token);
     // return result;
 }

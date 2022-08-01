@@ -1,9 +1,6 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
 @import './assets/sass/mixins';
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import './assets/sass/stylesheet';
+@import './assets/sass/rootColors';
+@import './assets/sass/common';
+@import './assets/sass/container';

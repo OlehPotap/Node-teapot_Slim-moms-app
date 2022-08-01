@@ -1,10 +1,10 @@
-import axios from 'axios'
+import axios from "axios";
 
 axios.defaults.baseURL = "";
 
-const addToken = token => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-}
+const addToken = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 // Для примера оставил закомментированным некоторый код из материалов которые дал Богдан.
 

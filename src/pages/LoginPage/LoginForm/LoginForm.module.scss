@@ -1,0 +1,165 @@
+@import "../../../assets/sass/mixins.scss";
+
+.section {
+  font-family: "Verdana", sans-serif;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  @include mq(tablet) {
+    padding-top: 160px;
+  }
+  @include mq(desktop) {
+    padding-top: 160px;
+  }
+
+  .form {
+    width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    @include mq(tablet) {
+      width: 768px;
+      padding-left: 16px;
+      margin: 0;
+    }
+    @include mq(desktop) {
+      width: 1280px;
+    }
+  }
+
+  h1 {
+    margin-bottom: 60px;
+    font-family: "Gotham Pro", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 13px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fc842d;
+    @include mq(tablet) {
+      text-align: left;
+    }
+  }
+
+  .inputs {
+    width: 285px;
+    margin-bottom: 60px;
+  }
+
+  .formDiv {
+    p {
+      position: relative;
+      margin-bottom: -17px;
+
+      font-style: normal;
+      font-weight: 700;
+      font-size: 11px;
+      line-height: 17px;
+      color: rgb(217 120 74);
+    }
+  }
+
+  .formDiv:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  label {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+  }
+
+  .input {
+    width: 100%;
+    left: 16px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    &:focus {
+      outline: none;
+    }
+    @include mq(tablet) {
+      width: 240px;
+      font-size: 14px;
+    }
+  }
+
+  .btnContainer {
+    text-align: center;
+    @include mq(tablet) {
+      text-align: unset;
+    }
+
+    button {
+      min-width: 182px;
+      padding: 13px 51px 13px 50px;
+      margin-bottom: 20px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+      display: inline-block;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      color: #ffffff;
+      background-color: #fc842d;
+      box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+      border-radius: 30px;
+      border: transparent;
+      &:hover,
+      :focus {
+        color: #fc842d;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+        border-radius: 30px;
+      }
+      @include mq(tablet) {
+        margin-right: 32px;
+      }
+      @include mq(desktop) {
+        margin-bottom: 0;
+      }
+    }
+
+    .link {
+      min-width: 182px;
+      padding: 11px 35px 11px 35px;
+
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+      display: inline-block;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      color: #fc842d;
+      background: #ffffff;
+      border: 2px solid #fc842d;
+      border-radius: 30px;
+      &:hover,
+      :focus {
+        color: #ffffff;
+        background-color: #fc842d;
+        box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+        border-radius: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../assets/sass/mixins.scss';
+
+.section {
+  font-family: 'Verdana', sans-serif;
+  margin-top: 147px;
+  //   padding-top: 40px;
+  //   padding-bottom: 40px;
+  @include mq(tablet) {
+    // padding-top: 160px;
+  }
+  @include mq(desktop) {
+    // padding-top: 160px;
+  }
+  .form {
+    margin-top: 68px;
+  }
+
+  .fieldsWrapper {
+    display: flex;
+    width: 608px;
+  }
+}

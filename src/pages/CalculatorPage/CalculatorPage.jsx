@@ -1,9 +1,12 @@
-const CalculatorPage = () => {
-return (
-    <div>
-        CalculatorPage
-    </div>
-)
-}
+import Container from '../../components/common/Container';
+import PrivatePagesBG from '../../components/PrivatePagesBG/PrivatePagesBG';
 
-export default CalculatorPage
+const CalculatorPage = () => {
+  return (
+    <Container>
+      <PrivatePagesBG />
+    </Container>
+  );
+};
+
+export default CalculatorPage;

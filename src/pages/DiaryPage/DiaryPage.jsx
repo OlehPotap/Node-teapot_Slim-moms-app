@@ -1,8 +1,11 @@
+import Container from '../../components/common/Container';
+import PrivatePagesBG from '../../components/PrivatePagesBG/PrivatePagesBG';
+
 const DiaryPage = () => {
     return (
-        <div>
-            DiaryPage
-        </div>
+        <Container>
+        <PrivatePagesBG />
+      </Container>
     )
     }
     

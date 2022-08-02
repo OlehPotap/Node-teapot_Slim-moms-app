@@ -1,6 +1,6 @@
-import { LoginBG } from "./LoginBG/LoginBG";
-import { LoginForm } from "./LoginForm/LoginForm";
-import s from "./LoginPage.module.scss";
+import { LoginBG } from '../../components/LoginForm/LoginBG/LoginBG';
+import { LoginForm } from '../../components/LoginForm/LoginForm';
+import s from './LoginPage.module.scss';
 
 const LoginPage = () => {
   return (

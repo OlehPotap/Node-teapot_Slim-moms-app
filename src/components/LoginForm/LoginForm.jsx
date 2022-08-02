@@ -1,12 +1,15 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import * as Yup from "yup";
-import { login } from "../../../redux/auth/auth-operations";
-import s from "./LoginForm.module.scss";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+import { login } from '../../redux/auth/auth-operations';
+import { getIsLoading } from '../../redux/auth/auth-selectors';
+import Loader from '../common/Loader/Loader';
+import s from './LoginForm.module.scss';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
 
   const schema = Yup.object().shape({
     email: Yup.string().trim().email().max(40).required(),
@@ -15,8 +18,9 @@ export const LoginForm = () => {
 
   return (
     <section className={s.section}>
+      {isLoading && <Loader />}
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: '', password: '' }}
         validationSchema={schema}
         onSubmit={({ email, password }) => {
           dispatch(login({ email, password }));
@@ -57,7 +61,8 @@ export const LoginForm = () => {
             </div>
             <div className={s.btnContainer}>
               <button type="submit">Login</button>
-              <Link to={"/register"} className={s.link}>
+
+              <Link to={'/register'} className={s.link}>
                 Register
               </Link>
             </div>

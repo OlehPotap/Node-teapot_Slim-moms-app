@@ -1,13 +1,14 @@
-import { LoginBG } from '../../components/LoginForm/LoginBG/LoginBG';
+import Container from '../../components/common/Container/Container';
+import MainBG from '../../components/MainBG/MainBG';
 import { LoginForm } from '../../components/LoginForm/LoginForm';
 import s from './LoginPage.module.scss';
 
 const LoginPage = () => {
   return (
-    <div className={s.container}>
+    <Container>
       <LoginForm className={s.form} />
-      <LoginBG />
-    </div>
+      <MainBG />
+    </Container>
   );
 };
 

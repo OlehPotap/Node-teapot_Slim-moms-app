@@ -2,20 +2,22 @@ import {
   Routes,
   Route,
   // Link
-} from "react-router-dom";
-import { lazy } from "react";
+} from 'react-router-dom';
+import { lazy } from 'react';
+import PublicRoute from './utils/PrivateRoute.js';
+import PrivateRoute from './utils/PublicRoute.js';
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
+const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const RegisterPage = lazy(() =>
-  import("./pages/RegisterPage/RegisterPage.jsx")
+  import('./pages/RegisterPage/RegisterPage.jsx')
 );
-const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage.jsx"));
-const DiaryPage = lazy(() => import("./pages/DiaryPage/DiaryPage.jsx"));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage.jsx'));
+const DiaryPage = lazy(() => import('./pages/DiaryPage/DiaryPage.jsx'));
 const CalculatorPage = lazy(() =>
-  import("./pages/CalculatorPage/CalculatorPage.jsx")
+  import('./pages/CalculatorPage/CalculatorPage.jsx')
 );
 const NotFoundPage = lazy(() =>
-  import("./pages/NotFoundPage/NotFoundPage.jsx")
+  import('./pages/NotFoundPage/NotFoundPage.jsx')
 );
 
 function App() {
@@ -23,10 +25,15 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/diary" element={<DiaryPage />} />
-        <Route path="/calculator" element={<CalculatorPage />} />
+
+        <Route element={<PublicRoute />}>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/diary" element={<DiaryPage />} />
+          <Route path="/calculator" element={<CalculatorPage />} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

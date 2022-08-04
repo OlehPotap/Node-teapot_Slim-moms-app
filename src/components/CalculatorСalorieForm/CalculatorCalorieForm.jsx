@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
 import { getIsLoading } from '../../redux/auth/auth-selectors';
 import * as Yup from 'yup';
+import authAPI from '../../shared/api/categoriesApi';
 
 const CalculatorCalorieForm = () => {
   // const dispatch = useDispatch();
@@ -15,6 +16,11 @@ const CalculatorCalorieForm = () => {
     currentWeight: Yup.number().required(),
     bloodType: Yup.string().required(),
   });
+
+  const getAllCategories = async () => {
+    const CategoriesList = await authAPI.getAll().then(({data})=>{return data})
+   return CategoriesList;
+  }
 
   return (
     <div className={s.section}>
@@ -31,12 +37,21 @@ const CalculatorCalorieForm = () => {
           bloodType: '',
         }}
         validationSchema={schema}
-        onSubmit={values => {
+        onSubmit={async (values) => {
           // Тут я так понимаю если пользователь залогинен
           // нужно оправить эти данные на бек
           // и отобразить исходящие данные в компоненте RightSideBar
           // или отобразить модалку, если не залогинен.
-          console.log(values);
+          const poruductsList = await getAllCategories()
+const filteredArr = await poruductsList.filter(el=>{
+return el.groupBloodNotAllowed[Number(values.bloodType)]
+})
+const newCategories = filteredArr.map(el=>el.categories.find(el=>{return el}))
+const makeUniq = (arr) => {
+  return arr.filter((el, id) => arr.indexOf(el) === id);
+}
+
+console.log(makeUniq(newCategories))
         }}
       >
         <Form className={s.form}>

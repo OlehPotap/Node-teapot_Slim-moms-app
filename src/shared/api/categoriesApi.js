@@ -1,17 +1,16 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = "localhost:8081/api/products-list";
-
-const addToken = token => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-}
+axios.defaults.baseURL = "http://localhost:8081/api/products-list";
+// const addToken = token => {
+//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// }
 
 // Данный запрос должен вернуть список всех категорий продуктов из базы продуктов
 //  и передать редаксу для записи в хранилище что-бы потом отобразить в форме поиска продуктов.
-const getAll = async (data)=> {
-    // const {data: result} = await axios.get("/", data);
+const getAll = async ()=> {
+    const result = await axios.get("/");
     // addToken(result.token);
-    // return result;
+    return result;
 }
 // Этот запрос должен вернуть объект выбранного продукта из коллекции "categories" 
 // и передать редаксу для записи в хранилище что-бы потом по сабмиту формы

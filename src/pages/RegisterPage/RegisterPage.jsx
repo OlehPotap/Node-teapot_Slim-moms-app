@@ -1,6 +1,6 @@
 import Container from "../../components/common/Container/Container";
 import MainBG from "../../components/MainBG/MainBG";
-import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
+import RegistrationForm from "../../components/RegistrationForm";
 
 const RegisterPage = () => {
     return (

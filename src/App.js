@@ -4,9 +4,12 @@ import {
   // Link
 } from 'react-router-dom';
 import { lazy } from 'react';
+<<<<<<< HEAD
+=======
 import PublicRoute from './utils/PrivateRoute.js';
 import PrivateRoute from './utils/PublicRoute.js';
 import Header from './components/Header/Header';
+>>>>>>> c72205d8c22d038fd7c134d15a88b688e82f70f9
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const RegisterPage = lazy(() =>

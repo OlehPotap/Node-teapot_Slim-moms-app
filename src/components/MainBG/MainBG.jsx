@@ -1,6 +1,6 @@
-import s from "./LoginBG.module.scss";
+import s from "./MainBG.module.scss";
 
-export const LoginBG = () => {
+export const MainBG = () => {
   return (
     <div className={s.loginBG}>
       <div className={s.banana}></div>
@@ -22,3 +22,5 @@ export const LoginBG = () => {
     </div>
   );
 };
+
+export default MainBG

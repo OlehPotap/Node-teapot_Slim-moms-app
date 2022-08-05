@@ -1,7 +1,7 @@
-@import "../../../assets/sass/mixins.scss";
+@import '../../assets/sass/mixins.scss';
 
 .section {
-  font-family: "Verdana", sans-serif;
+  font-family: 'Verdana', sans-serif;
   padding-top: 40px;
   padding-bottom: 40px;
   @include mq(tablet) {
@@ -28,7 +28,7 @@
 
   h1 {
     margin-bottom: 60px;
-    font-family: "Gotham Pro", sans-serif;
+    font-family: 'Gotham Pro', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -79,7 +79,7 @@
     border: none;
     border-bottom: 1px solid #e0e0e0;
     &::before {
-      content: "";
+      content: '';
       width: 10px;
       height: 10px;
       border-radius: 50%;

@@ -1,0 +1,70 @@
+// @import '../../assets/sass/container';
+@import '../../../assets/sass/common';
+@import '../../../assets/sass/rootColors';
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/stylesheet';
+
+.user-info {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--background-secondary-color);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 20px;
+  text-transform: capitalize;
+  position: absolute;
+  top: 86px;
+  right: 0;
+  width: 100%;
+  @include mq(tablet) {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: auto;
+    background-color: transparent;
+    margin-right: 15px;
+  }
+
+  @include mq(desktop) {
+    margin-right: 0;
+    align-items: flex-end;
+    padding: 0;
+  }
+}
+
+.arrow-wrap {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  @include mq(tablet) {
+    display: none;
+  }
+}
+
+.user-name {
+  margin-right: 32px;
+  &::after {
+    content: '';
+    height: 32px;
+    width: 2px;
+    background-color: #e0e0e0;
+    position: absolute;
+    right: 62px;
+    top: 8px;
+
+    @include mq(desktop) {
+      right: 46px;
+      top: 41px;
+    }
+  }
+  @include mq(desktop) {
+    margin-right: 40px;
+  }
+}
+
+.logout-btn {
+  color: var(--primary-text-color);
+  font-weight: 700;
+  @include mq(tablet) {
+  }
+}

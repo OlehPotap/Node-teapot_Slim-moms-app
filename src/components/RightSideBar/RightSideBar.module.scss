@@ -1,0 +1,43 @@
+@import '../../assets/sass/mixins';
+
+.wrapper {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f0f1f3;
+
+  @include mq(tablet) {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url(../../assets/images/PrivatepagesBG/leaves-tablet.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+
+  @include mq(desktop) {
+    background-image: url(../../assets/images/PrivatepagesBG/leaves.png);
+  }
+}
+
+.header {
+  @include font-style(14px, 700, 1.21, 0.04em, #212121);
+  margin-bottom: 20px;
+}
+
+.list {
+  margin-bottom: 40px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.info {
+  @include font-style(14px, 400, 1.21, 0.04em, #9b9faa);
+}

@@ -1,4 +1,4 @@
-@import "../../../assets/sass/mixins.scss";
+@import '../../assets/sass/mixins';
 
 .loginBG {
   position: fixed;
@@ -16,7 +16,7 @@
       width: 900px;
       height: 900px;
       position: absolute;
-      background-image: url("../../../assets/images/loginBG/leaves.png");
+      background-image: url('../../assets/images/MainBG/leaves.png');
       background-repeat: no-repeat;
     }
     @include mq(desktop) {
@@ -34,7 +34,7 @@
       position: absolute;
       width: 500px;
       height: 500px;
-      background-image: url("../../../assets/images/loginBG/banana.png");
+      background-image: url('../../assets/images/MainBG/banana.png');
       background-repeat: no-repeat;
     }
     @include mq(desktop) {
@@ -50,7 +50,7 @@
       position: absolute;
       width: 500px;
       height: 500px;
-      background-image: url("../../../assets/images/loginBG/strawberry.png");
+      background-image: url('../../assets/images/MainBG/strawberry.png');
       background-repeat: no-repeat;
     }
     @include mq(desktop) {

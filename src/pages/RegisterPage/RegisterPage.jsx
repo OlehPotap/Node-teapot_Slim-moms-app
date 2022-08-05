@@ -1,8 +1,11 @@
+import Container from "../../components/common/Container/Container"
+import MainBG from "../../components/MainBG/MainBG"
+
 const RegisterPage = () => {
     return (
-        <div>
-            RegisterPage
-        </div>
+        <Container>
+            <MainBG/>
+        </Container>
     )
     }
     

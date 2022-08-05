@@ -1,14 +1,14 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import authAPI from "../../shared/api/authApi";
+import authAPI from '../../shared/api/authApi';
 
-export const signup = createAsyncThunk("auth/signup", async () => {
+export const signup = createAsyncThunk('auth/signup', async () => {
   try {
   } catch (error) {}
 });
 
 export const login = createAsyncThunk(
-  "auth/login",
+  'auth/login',
   async (userData, thunkApi) => {
     try {
       return await authAPI.login(userData);
@@ -18,12 +18,15 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async () => {
+export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
-  } catch (error) {}
+    return await authAPI.logout();
+  } catch (error) {
+    thunkApi.rejectWithValue(error.message);
+  }
 });
 
-export const current = createAsyncThunk("auth/current", async () => {
+export const current = createAsyncThunk('auth/current', async () => {
   try {
   } catch (error) {}
 });

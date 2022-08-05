@@ -6,6 +6,10 @@ const addToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
+const removeToken = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
 // Для примера оставил закомментированным некоторый код из материалов которые дал Богдан.
 
 const signup = async owner => {
@@ -21,8 +25,9 @@ const login = async owner => {
 };
 
 const logout = async () => {
-  // const {data: result} = await axios.post("/users/logout");
-  // return result;
+  await axios.post('/users/logout');
+  removeToken();
+  // return data;
 };
 
 const getCurrent = async token => {

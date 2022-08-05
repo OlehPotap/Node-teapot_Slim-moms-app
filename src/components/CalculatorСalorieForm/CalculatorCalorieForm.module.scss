@@ -1,0 +1,165 @@
+@import '../../assets/sass/mixins.scss';
+
+.section {
+  font-family: 'Verdana', sans-serif;
+  margin-top: 147px;
+  //   padding-top: 40px;
+  //   padding-bottom: 40px;
+  @include mq(tablet) {
+    // padding-top: 160px;
+  }
+  @include mq(desktop) {
+    // padding-top: 160px;
+  }
+  .form {
+    margin-top: 68px;
+  }
+
+  .fieldsWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 240px);
+    grid-column-gap: 32px;
+    grid-row-gap: 1em;
+
+    p {
+      position:absolute;
+      top: -10px;
+      right: -18px;
+      margin-bottom: 0px;
+
+      font-style: normal;
+      font-weight: 700;
+      font-size: 11px;
+      line-height: 17px;
+      color: rgb(217 120 74);
+    }
+  }
+
+  .fieldWrapper {
+    margin-left: 10px;
+    position: relative;
+  }
+
+  .textLabel {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+  }
+
+  .radioLabel {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+  }
+  .input {
+    background-color: transparent;
+    width: 100%;
+    left: 16px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    &::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    &:focus {
+      outline: none;
+    }
+    @include mq(tablet) {
+      width: 240px;
+      font-size: 14px;
+    }
+  }
+  .radioGroup {
+    position: absolute;
+    width: 240px;
+    top: 37px;
+    padding-top: 8px;
+    border-top: 1px solid #e0e0e0;
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+  }
+}
+
+.radioLabel>input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.radioLabel>span {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.radioLabel>span::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid  #e0e0e0;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.radioLabel>input:not(:disabled):not(:checked)+span:hover::before {
+  border-color: #FC842D;
+}
+
+.radioLabel>input:checked+span::before {
+  border-color: #FC842D;
+  background-color: #FC842D;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+.submitButton {
+  position: absolute;
+  left:270px;
+  top: 318px;
+  min-width: 210px;
+  padding: 13px 51px 13px 50px;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+  border: transparent;
+  &:hover,
+  :focus {
+    color: #fc842d;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 30px;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

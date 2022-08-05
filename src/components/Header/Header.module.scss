@@ -1,0 +1,155 @@
+@import '../../assets/sass/container';
+@import '../../assets/sass/common';
+@import '../../assets/sass/rootColors';
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/stylesheet';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 16px;
+  border-bottom: 2px solid #e0e0e0;
+  font-family: GothamPro;
+  position: relative;
+
+  @include mq(desktop) {
+    justify-content: flex-start;
+    border-bottom: none;
+    padding-top: 80px;
+  }
+}
+
+.logo-mobile {
+  width: 47px;
+
+  @include mq(tablet) {
+    display: none;
+  }
+}
+.logo-mobile-login {
+  width: 160px;
+  @include mq(tablet) {
+    display: none;
+  }
+}
+
+.logo-tablet {
+  display: none;
+
+  @include mq(tablet-only) {
+    display: block;
+    width: 162px;
+  }
+}
+
+.logo-desktop {
+  display: none;
+  @include mq(desktop) {
+    display: block;
+    width: 167px;
+    margin-right: 40px;
+  }
+}
+
+.nav {
+  display: flex;
+  text-transform: uppercase;
+  align-items: center;
+  position: relative;
+  a:first-child {
+    margin-right: 16px;
+  }
+  @include mq(desktop) {
+    align-items: flex-end;
+    &::before {
+      content: '';
+      height: 32px;
+      width: 1px;
+      background-color: #e0e0e0;
+      position: absolute;
+      left: -20px;
+      top: 40px;
+    }
+  }
+}
+.user-nav {
+  display: none;
+  @include mq(desktop) {
+    display: flex;
+  }
+}
+
+.user-nav-burger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 60px;
+  position: absolute;
+  left: 0;
+  top: 86px;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--background-mobile-menu);
+  z-index: 10;
+  .link {
+    color: var(--highlight-white-color);
+    font-size: 18px;
+    &:hover,
+    &:focus {
+      color: var(--primary-text-color);
+    }
+    @include mq(tablet) {
+      font-size: 24px;
+    }
+  }
+  .link:first-child {
+    margin-bottom: 35px;
+    margin-right: 0;
+    @include mq(tablet) {
+      margin-bottom: 40px;
+    }
+  }
+  @include mq(tablet) {
+    padding-top: 100px;
+  }
+}
+
+.auth-nav {
+  @include mq(desktop) {
+    height: 66px;
+  }
+}
+
+.link {
+  color: var(--primary-text-color);
+  &:hover,
+  &:focus {
+    color: var(--secondary-text-color);
+  }
+}
+
+.active {
+  text-decoration: none;
+  color: var(--secondary-text-color);
+}
+
+.btn-menu {
+  @include mq(desktop) {
+    display: none;
+  }
+}
+
+.nav-wrap {
+  @include mq(tablet) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  @include mq(desktop) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 66px;
+  }
+}

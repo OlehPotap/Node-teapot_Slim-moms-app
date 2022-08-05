@@ -6,6 +6,7 @@ import {
 import { lazy } from 'react';
 import PublicRoute from './utils/PrivateRoute.js';
 import PrivateRoute from './utils/PublicRoute.js';
+import Header from './components/Header/Header';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const RegisterPage = lazy(() =>
@@ -23,6 +24,7 @@ const NotFoundPage = lazy(() =>
 function App() {
   return (
     <>
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
 

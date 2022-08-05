@@ -18,9 +18,12 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk('auth/logout', async () => {
+export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
-  } catch (error) {}
+    return await authAPI.logout();
+  } catch (error) {
+    thunkApi.rejectWithValue(error.message);
+  }
 });
 
 export const current = createAsyncThunk('auth/current', async () => {

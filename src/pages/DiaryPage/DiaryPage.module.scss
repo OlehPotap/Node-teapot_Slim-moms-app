@@ -1,0 +1,142 @@
+.container {
+  box-sizing: border-box;
+}
+
+.modal {
+  display: none;
+}
+
+.list {
+  display: flex;
+  height: 26px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  color: #212121;
+}
+
+.foodName {
+  width: 138px;
+  height: 26px;
+  margin-right: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.foodWeight {
+  margin-right: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.calendarImage {
+  fill: #9b9faa;
+}
+
+.dateAndCalendar {
+  display: flex;
+}
+
+.line {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.listItem {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 320px) {
+  .container {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 40px;
+  }
+
+  .date {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 30px;
+  }
+}
+
+.calendarTable {
+  margin-bottom: 40px;
+}
+
+.button {
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 60px;
+}
+
+.summary {
+  /* padding: 91px 87px; */
+  background-color: #f0f1f3;
+}
+
+.calendarTable::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.calendarTable {
+  height: 210px;
+  overflow-y: auto;
+}
+.calendarTable::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 4px;
+  height: 15px;
+}
+
+.calendarTable::-webkit-scrollbar-thumb:hover {
+  background-color: #fc842d;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding: 100px 92px 61px;
+  }
+
+  .form {
+    margin-bottom: 32px;
+  }
+
+  .date {
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 41px;
+    margin-bottom: 60px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .diarySection {
+    max-width: 1280px;
+    margin: 0 auto;
+    /* padding: 143px 115px 60px; */
+    display: flex;
+  }
+
+  .container {
+    min-width: 745;
+    /* padding: 0;
+    padding-right: 30px;
+    margin: 0; */
+  }
+
+  .summary {
+    width: 535;
+  }
+}

@@ -9,6 +9,7 @@ export const signup = createAsyncThunk(
       return await authAPI.signup(userData);
     } catch (error) {
       thunkApi.rejectWithValue(error.request.status);
+      
     }
 });
 
@@ -18,7 +19,7 @@ export const login = createAsyncThunk(
     try {
       return await authAPI.login(userData);
     } catch (error) {
-      thunkApi.rejectWithValue(error.request.status);
+      return thunkApi.rejectWithValue(error.request.status);
     }
   }
 );
@@ -27,7 +28,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
     return await authAPI.logout();
   } catch (error) {
-    thunkApi.rejectWithValue(error.message);
+   return thunkApi.rejectWithValue(error.message);
   }
 });
 

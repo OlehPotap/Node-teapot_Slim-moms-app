@@ -1,0 +1,20 @@
+// @import '../../../assets/sass/mixins.scss';
+.unrec_prod_list {
+  padding-left: 20px;
+}
+.unrec_prod_list li {
+  list-style-type: decimal;
+
+  text-align: left;
+  color: var(--primary-text-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+}
+.unrec_prod_list li:not(:last-child) {
+  margin-bottom: 14px;
+}
+.unrec_prod_list li:last-child {
+  margin-bottom: 40px;
+}

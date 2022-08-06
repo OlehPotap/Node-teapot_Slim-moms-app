@@ -1,4 +1,13 @@
 @import '../../assets/sass/mixins.scss';
+.additional_bar {
+  height: 40px;
+  background: #eff1f3;
+}
+.additional_barx {
+  width: 12px;
+  height: 40px;
+  margin-left: 10px;
+}
 
 .overlay {
   position: absolute;
@@ -23,11 +32,16 @@
 }
 
 .close {
-  font-size: 24px;
-  font-weight: bold;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  font-size: 16px;
+  font-weight: 600;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   cursor: pointer;
-  color: red;
+
   position: absolute;
   top: 10px;
   right: 10px;
@@ -35,7 +49,7 @@
 
 .modal_main_wrapper {
   text-align: center;
-  width: 509px;
+  min-width: 320px;
 }
 .modalh2 {
   font-size: 26px;
@@ -66,10 +80,139 @@
   width: 330px;
   margin: 0 auto;
 }
-// <div className="modal_main_wrapper">
-// <h2 className="modalh2"> Your recommended daily calorie intake is</h2>
-// <span className="modalkkal">{givenCalories} kkal</span>
-// <span className="horizontal_line"></span>
-// <h3 className="products_header">Foods you should not eat</h3>
-// <span>{givenProducts}</span>
-// </div>
+.products_header {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+.loose_weight_btn {
+  display: inline-block;
+  text-decoration: none;
+  min-width: 210px;
+  padding: 13px 51px 13px 50px;
+  margin-bottom: 81px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+  border: transparent;
+  &:hover,
+  :focus {
+    color: #fc842d;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 30px;
+  }
+}
+
+.svgx {
+  width: 12px;
+  height: 12px;
+}
+
+@include mq(mobile-only) {
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: normal;
+    align-items: normal;
+    z-index: 1000;
+    margin-top: 81px;
+  }
+  .content {
+    background-color: #fff;
+    padding: 0px;
+    border-radius: 0px;
+    min-width: 300px;
+    max-width: 700px;
+    position: relative;
+  }
+  .modal_main_wrapper {
+    text-align: center;
+    min-width: 320px;
+    margin-left: 0px;
+  }
+  .modalh2 {
+    width: 320px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .horizontal_line {
+    display: block;
+    margin-top: 32px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+  }
+  .modal_second_wrapper {
+    width: 280px;
+    margin-left: 20px;
+  }
+  .products_header {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .loose_weight_btn {
+    display: inline-block;
+    text-decoration: none;
+    min-width: 210px;
+    padding: 13px 25px 13px 25px;
+    margin-bottom: 81px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #fc842d;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 30px;
+    border: transparent;
+    &:hover,
+    :focus {
+      color: #fc842d;
+      background-color: #ffffff;
+      box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+      border-radius: 30px;
+    }
+  }
+
+  .svgx {
+    width: 12px;
+    height: 12px;
+  }
+}
+@include mq(tablet-only) {
+}

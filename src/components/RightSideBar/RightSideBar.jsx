@@ -16,7 +16,8 @@ const RightSideBar = () => {
 
   return (
     <div className={s.wrapper}>
-      <div>
+      <div className={s.container}>
+      <div className={s.summary}>
         <h3 className={s.header}>Summary for {data}</h3>
         <ul className={s.list}>
           <li className={s.item}>
@@ -44,6 +45,7 @@ const RightSideBar = () => {
             ? forbidenCategories
             : 'Your diet will be displayed here'}
         </p>
+      </div>
       </div>
     </div>
   );

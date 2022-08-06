@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { getIslogin } from '../../redux/auth/auth-selectors';
 
 import AuthNav from './AuthNav';
+import { NavLink } from 'react-router-dom';
 import UserInfo from './UserInfo/UserInfo';
 import Navigation from './Navigation';
 
@@ -14,7 +15,7 @@ function Header() {
   return (
     <header className={s.header}>
       <div>
-        <a href="/diary">
+        <NavLink to="/diary" exact="true">
           {isLogin ? (
             <img
               className={s['logo-mobile-login']}
@@ -26,7 +27,7 @@ function Header() {
           )}
           <img className={s['logo-tablet']} src={logoTablet} alt="logo" />
           <img className={s['logo-desktop']} src={logoDesktop} alt="logo" />
-        </a>
+        </NavLink>
       </div>
       {isLogin ? (
         <div className={s['nav-wrap']}>

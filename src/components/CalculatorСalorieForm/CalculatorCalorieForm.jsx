@@ -48,21 +48,13 @@ const CalculatorCalorieForm = () => {
         }}
         validationSchema={schema}
         onSubmit={async values => {
-          // Тут я так понимаю если пользователь залогинен
-          // нужно оправить эти данные на бек
-          // и отобразить исходящие данные в компоненте RightSideBar
-          // или отобразить модалку, если не залогинен.
-          console.log(values);
           const calcCalories =
             10 * values.currentWeight +
             6.25 * values.height -
             5 * values.age -
             161 -
             10 * (values.currentWeight - values.desiredWeight);
-
           setCalories(calcCalories);
-          // console.log('calcCalories: ', calcCalories);
-          // console.log('calories: ', calories);
           const poruductsList = await getAllCategories();
           const filteredArr = await poruductsList.filter(el => {
             return el.groupBloodNotAllowed[Number(values.bloodType)];
@@ -75,7 +67,6 @@ const CalculatorCalorieForm = () => {
           const makeUniq = arr => {
             // return arr.filter((el, id) => arr.indexOf(el) === id);
             const newArr = arr.filter((el, id) => arr.indexOf(el) === id);
-            console.log('newArr: ', newArr);
             // let test = document.getElementById('id2');
             // console.log('test: ', test);
             // let list = '';
@@ -105,7 +96,7 @@ const CalculatorCalorieForm = () => {
               <ErrorMessage
                 name="height"
                 render={(err) => {
-                  console.log(err)
+                  
                   return <p>{err}</p>
                 }}
               />
@@ -124,7 +115,7 @@ const CalculatorCalorieForm = () => {
               <ErrorMessage
                 name="desiredWeight"
                 render={(err) => {
-                  console.log(err)
+                  
                   return <p>{err}</p>
                 }}
               />
@@ -143,7 +134,7 @@ const CalculatorCalorieForm = () => {
               <ErrorMessage
                 name="age"
                 render={(err) => {
-                  console.log(err)
+                  
                   return <p>{err}</p>
                 }}
               />
@@ -197,7 +188,7 @@ const CalculatorCalorieForm = () => {
               <ErrorMessage
                 name="bloodType"
                 render={(err) => {
-                  console.log(err)
+                 
                   return <p>{err}</p>
                 }}
               />
@@ -216,7 +207,7 @@ const CalculatorCalorieForm = () => {
               <ErrorMessage
                 name="currentWeight"
                 render={(err) => {
-                  console.log(err)
+                 
                   return <p>{err}</p>
                 }}
               />

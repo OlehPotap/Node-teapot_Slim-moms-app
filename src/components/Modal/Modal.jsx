@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import FrobidenProductsList from './ForbidenProductsList';
 
 import s from './Modal.module.scss';
 
@@ -11,6 +12,8 @@ const Modal = ({ handleClose, children, givenCalories, givenProducts }) => {
 
     return () => document.removeEventListener('keydown', close);
   });
+
+  console.log(givenProducts)
 
   const close = e => {
     if (e.code === 'Escape') {
@@ -34,9 +37,9 @@ const Modal = ({ handleClose, children, givenCalories, givenProducts }) => {
             </span>
             <span className={s.horizontal_line}></span>
             <h3 className="products_header">Foods you should not eat</h3>
-            <ol className="list_set" id="id2">
-              {givenProducts}
-            </ol>
+            {/* <ol className={s.list_set}> */}
+             <FrobidenProductsList givenProducts={givenProducts}/>
+            {/* </ol> */}
           </div>
         </div>
 

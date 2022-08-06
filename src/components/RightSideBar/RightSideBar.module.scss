@@ -1,32 +1,70 @@
 @import '../../assets/sass/mixins';
 
-.wrapper {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #f0f1f3;
-
+  margin: 0 auto;
   @include mq(tablet) {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     padding-top: 80px;
     padding-bottom: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: normal;
+    position: relative;
+    width: 768px;
+    margin: 0 auto;
+  }
+  @include mq(desktop) {
+    float: right;
+    flex-direction: column;
+    width: 288px;
+    margin-top: -600px;
+    margin-right: 130px;
+  }
+}
+.summary {
+  width: 280px;
+  @include mq(tablet) {
+  width: 288px;
+  }
+}
+
+.categories {
+  width: 280px;
+  @include mq(tablet) {
+  width: 288px;
+  }
+}
+.wrapper {
+  margin-top: 231px;
+  background-color: #f0f1f3;
+  width: 100vw;
+  @include mq(tablet) {
     background-image: url(../../assets/images/PrivatepagesBG/leaves-tablet.png);
     background-repeat: no-repeat;
     background-position: bottom right;
   }
 
   @include mq(desktop) {
-    background-image: url(../../assets/images/PrivatepagesBG/leaves.png);
+    background-color: transparent;
+    background-image: none;
+    // background-image: url(../../assets/images/PrivatepagesBG/leaves.png);
   }
 }
 
 .header {
   @include font-style(14px, 700, 1.21, 0.04em, #212121);
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .list {
   margin-bottom: 40px;
+  // margin-top:20px
 }
 
 .item {

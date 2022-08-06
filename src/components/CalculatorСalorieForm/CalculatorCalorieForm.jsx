@@ -17,10 +17,10 @@ const CalculatorCalorieForm = () => {
     setModalOpen(!modalOpen);
   };
   const schema = Yup.object().shape({
-    height: Yup.number().required(),
-    desiredWeight: Yup.number().required(),
-    age: Yup.number().required(),
-    currentWeight: Yup.number().required(),
+    height: Yup.number().required().max(250),
+    desiredWeight: Yup.number().required().min(40),
+    age: Yup.number().required().max(100).min(16),
+    currentWeight: Yup.number().required().min(40),
     bloodType: Yup.string().required(),
   });
 
@@ -94,7 +94,10 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="height"
-                render={() => <p>Field is required</p>}
+                render={(err) => {
+                  console.log(err)
+                  return <p>{err}</p>
+                }}
               />
             </div>
             <div className={s.fieldWrapper}>
@@ -110,7 +113,10 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="desiredWeight"
-                render={() => <p>Field is required</p>}
+                render={(err) => {
+                  console.log(err)
+                  return <p>{err}</p>
+                }}
               />
             </div>
             <div className={s.fieldWrapper}>
@@ -126,7 +132,10 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="age"
-                render={() => <p>Field is required</p>}
+                render={(err) => {
+                  console.log(err)
+                  return <p>{err}</p>
+                }}
               />
             </div>
             <div className={s.fieldWrapper}>
@@ -177,7 +186,10 @@ const CalculatorCalorieForm = () => {
               </div>
               <ErrorMessage
                 name="bloodType"
-                render={() => <p>Field is required</p>}
+                render={(err) => {
+                  console.log(err)
+                  return <p>{err}</p>
+                }}
               />
             </div>
             <div className={s.fieldWrapper}>
@@ -193,7 +205,10 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="currentWeight"
-                render={() => <p>Field is required</p>}
+                render={(err) => {
+                  console.log(err)
+                  return <p>{err}</p>
+                }}
               />
             </div>
             <button className={s.submitButton} type="submit">

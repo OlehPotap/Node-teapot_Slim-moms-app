@@ -32,10 +32,10 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
-        {/* <Route element={<PrivateRoute />}> */}
+        <Route element={<PrivateRoute />}>
           <Route path="/diary" element={<DiaryPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
-        {/* </Route> */}
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

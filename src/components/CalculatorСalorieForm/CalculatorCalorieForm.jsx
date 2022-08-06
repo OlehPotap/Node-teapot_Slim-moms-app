@@ -2,15 +2,17 @@ import s from './CalculatorCalorieForm.module.scss';
 import Loader from '../../components/common/Loader/Loader';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
-import { getIsLoading } from '../../redux/auth/auth-selectors';
+import { getIsLoading, getIslogin } from '../../redux/auth/auth-selectors';
 import * as Yup from 'yup';
 import Modal from '../Modal';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { getForbidenCategories } from '../../redux/categories/categories-operations';
 
+
 const CalculatorCalorieForm = () => {
   const dispatch = useDispatch();
+  const isLogin = useSelector(getIslogin);
   const isLoading = useSelector(getIsLoading);
   const [modalOpen, setModalOpen] = useState(false);
   const [calories, setCalories] = useState('');
@@ -49,9 +51,12 @@ const CalculatorCalorieForm = () => {
             161 -
             10 * (values.currentWeight - values.desiredWeight);
           setCalories(calcCalories);
-          dispatch(getForbidenCategories(values));
-
-          ShowModal();
+          if(!isLogin) {
+            dispatch(getForbidenCategories(values));
+            ShowModal();
+          } else {
+            
+          }
         }}
       >
         <Form className={s.form}>

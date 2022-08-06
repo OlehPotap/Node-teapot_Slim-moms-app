@@ -31,9 +31,9 @@ const logout = async () => {
 };
 
 const getCurrent = async token => {
-  // addToken(token);
-  // const {data: result} = await axios.get("/users/current");
-  // return result;
+  addToken(token);
+  const {data: result} = await axios.get("/users/current");
+  return result;
 };
 
 const authAPI = {

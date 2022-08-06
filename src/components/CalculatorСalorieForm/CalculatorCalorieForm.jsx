@@ -6,13 +6,14 @@ import { getIsLoading } from '../../redux/auth/auth-selectors';
 import * as Yup from 'yup';
 import Modal from '../Modal';
 import { useState } from 'react';
-import authAPI from '../../shared/api/categoriesApi';
+import { useDispatch } from 'react-redux/es/exports';
+import { getForbidenCategories } from '../../redux/categories/categories-operations';
 
 const CalculatorCalorieForm = () => {
+  const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const [modalOpen, setModalOpen] = useState(false);
   const [calories, setCalories] = useState('');
-  const [reqProducts, setReqProducts] = useState('');
 
   const ShowModal = () => {
     setModalOpen(!modalOpen);
@@ -25,13 +26,6 @@ const CalculatorCalorieForm = () => {
     bloodType: Yup.string().required(),
   });
 
-  const getAllCategories = async () => {
-    const CategoriesList = await authAPI.getAll().then(({ data }) => {
-      return data;
-    });
-    return CategoriesList;
-  };
-
   return (
     <div className={s.section}>
       {isLoading && <Loader />}
@@ -40,10 +34,10 @@ const CalculatorCalorieForm = () => {
       </h1>
       <Formik
         initialValues={{
-          height: '',
-          desiredWeight: '',
-          age: '',
-          currentWeight: '',
+          height: '180',
+          desiredWeight: '66',
+          age: '22',
+          currentWeight: '77',
           bloodType: '',
         }}
         validationSchema={schema}
@@ -55,27 +49,7 @@ const CalculatorCalorieForm = () => {
             161 -
             10 * (values.currentWeight - values.desiredWeight);
           setCalories(calcCalories);
-          const poruductsList = await getAllCategories();
-          const filteredArr = await poruductsList.filter(el => {
-            return el.groupBloodNotAllowed[Number(values.bloodType)];
-          });
-          const newCategories = filteredArr.map(el =>
-            el.categories.find(el => {
-              return el;
-            })
-          );
-          const makeUniq = arr => {
-            // return arr.filter((el, id) => arr.indexOf(el) === id);
-            const newArr = arr.filter((el, id) => arr.indexOf(el) === id);
-            // let test = document.getElementById('id2');
-            // console.log('test: ', test);
-            // let list = '';
-            // for (var i = 0; i < newArr.length; i++) {
-            //   list += '<li>' + newArr[i] + '</li>';
-            // }
-            return newArr;
-          };
-          setReqProducts(makeUniq(newCategories));
+          dispatch(getForbidenCategories(values));
 
           ShowModal();
         }}
@@ -95,9 +69,8 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="height"
-                render={(err) => {
-                  
-                  return <p>{err}</p>
+                render={err => {
+                  return <p>{err}</p>;
                 }}
               />
             </div>
@@ -114,9 +87,8 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="desiredWeight"
-                render={(err) => {
-                  
-                  return <p>{err}</p>
+                render={err => {
+                  return <p>{err}</p>;
                 }}
               />
             </div>
@@ -133,9 +105,8 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="age"
-                render={(err) => {
-                  
-                  return <p>{err}</p>
+                render={err => {
+                  return <p>{err}</p>;
                 }}
               />
             </div>
@@ -187,9 +158,8 @@ const CalculatorCalorieForm = () => {
               </div>
               <ErrorMessage
                 name="bloodType"
-                render={(err) => {
-                 
-                  return <p>{err}</p>
+                render={err => {
+                  return <p>{err}</p>;
                 }}
               />
             </div>
@@ -206,9 +176,8 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="currentWeight"
-                render={(err) => {
-                 
-                  return <p>{err}</p>
+                render={err => {
+                  return <p>{err}</p>;
                 }}
               />
             </div>
@@ -218,13 +187,7 @@ const CalculatorCalorieForm = () => {
           </div>
         </Form>
       </Formik>
-      {modalOpen && (
-        <Modal
-          handleClose={ShowModal}
-          givenCalories={calories}
-          givenProducts={reqProducts}
-        />
-      )}
+      {modalOpen && <Modal handleClose={ShowModal} givenCalories={calories} />}
     </div>
   );
 };

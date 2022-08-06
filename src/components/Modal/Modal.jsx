@@ -5,7 +5,7 @@ import s from './Modal.module.scss';
 
 const modalRoot = document.getElementById('modal-root');
 
-const Modal = ({ handleClose, children, givenCalories }) => {
+const Modal = ({ handleClose, children, givenCalories, givenProducts }) => {
   useEffect(() => {
     document.addEventListener('keydown', close);
 
@@ -24,7 +24,22 @@ const Modal = ({ handleClose, children, givenCalories }) => {
   return createPortal(
     <div onClick={close} className={s.overlay}>
       <div className={s.content}>
-        <span>Calories {givenCalories}</span>
+        <div className={s.modal_main_wrapper}>
+          <h2 className={s.modalh2}>
+            Your recommended daily <br></br> calorie intake is
+          </h2>
+          <div className={s.modal_second_wrapper}>
+            <span className={s.modalkkal}>
+              {givenCalories} <span className={s.modalkkal_text}> kkal</span>
+            </span>
+            <span className={s.horizontal_line}></span>
+            <h3 className="products_header">Foods you should not eat</h3>
+            <ol className="list_set" id="id2">
+              {givenProducts}
+            </ol>
+          </div>
+        </div>
+
         <span onClick={close} className={s.close}>
           X
         </span>

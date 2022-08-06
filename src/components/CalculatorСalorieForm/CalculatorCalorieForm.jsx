@@ -12,6 +12,7 @@ const CalculatorCalorieForm = () => {
   const isLoading = useSelector(getIsLoading);
   const [modalOpen, setModalOpen] = useState(false);
   const [calories, setCalories] = useState('');
+  const [reqProducts, setReqProducts] = useState('');
 
   const ShowModal = () => {
     setModalOpen(!modalOpen);
@@ -72,10 +73,19 @@ const CalculatorCalorieForm = () => {
             })
           );
           const makeUniq = arr => {
-            return arr.filter((el, id) => arr.indexOf(el) === id);
+            // return arr.filter((el, id) => arr.indexOf(el) === id);
+            const newArr = arr.filter((el, id) => arr.indexOf(el) === id);
+            console.log('newArr: ', newArr);
+            // let test = document.getElementById('id2');
+            // console.log('test: ', test);
+            // let list = '';
+            // for (var i = 0; i < newArr.length; i++) {
+            //   list += '<li>' + newArr[i] + '</li>';
+            // }
+            return newArr;
           };
+          setReqProducts(makeUniq(newCategories));
 
-          console.log(makeUniq(newCategories));
           ShowModal();
         }}
       >
@@ -217,7 +227,13 @@ const CalculatorCalorieForm = () => {
           </div>
         </Form>
       </Formik>
-      {modalOpen && <Modal handleClose={ShowModal} givenCalories={calories} />}
+      {modalOpen && (
+        <Modal
+          handleClose={ShowModal}
+          givenCalories={calories}
+          givenProducts={reqProducts}
+        />
+      )}
     </div>
   );
 };

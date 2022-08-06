@@ -32,3 +32,44 @@
   top: 10px;
   right: 10px;
 }
+
+.modal_main_wrapper {
+  text-align: center;
+  width: 509px;
+}
+.modalh2 {
+  font-size: 26px;
+  text-align: center;
+  line-height: calc(32 / 26) px;
+  font-weight: 700;
+}
+.modalkkal {
+  font-size: 48px;
+  text-align: center;
+  line-height: calc(58 / 48) px;
+  font-weight: 700;
+  letter-spacing: 4%;
+}
+.modalkkal_text {
+  font-size: 16px;
+  text-align: center;
+  line-height: calc(20 / 16) px;
+  font-weight: 700;
+  letter-spacing: 4%;
+}
+.horizontal_line {
+  display: block;
+  width: 100%;
+  border-top: 1px solid #ccc;
+}
+.modal_second_wrapper {
+  width: 330px;
+  margin: 0 auto;
+}
+// <div className="modal_main_wrapper">
+// <h2 className="modalh2"> Your recommended daily calorie intake is</h2>
+// <span className="modalkkal">{givenCalories} kkal</span>
+// <span className="horizontal_line"></span>
+// <h3 className="products_header">Foods you should not eat</h3>
+// <span>{givenProducts}</span>
+// </div>

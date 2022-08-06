@@ -7,6 +7,9 @@ import { lazy } from 'react';
 import PublicRoute from './utils/PrivateRoute.js';
 import PrivateRoute from './utils/PublicRoute.js';
 import Header from './components/Header/Header';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux/es/exports.js';
+import { current } from './redux/auth/auth-operations.js';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const RegisterPage = lazy(() =>
@@ -22,6 +25,10 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect (()=>{
+    dispatch(current()) //  eslint-disable-next-line
+  }, [])
   return (
     <>
       <Header />

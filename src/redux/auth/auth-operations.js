@@ -32,7 +32,12 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   }
 });
 
-export const current = createAsyncThunk('auth/current', async () => {
+export const current = createAsyncThunk('auth/current', async (_, thunkApi) => {
   try {
-  } catch (error) {}
+    const token = thunkApi.getState().auth.token;
+    return await authAPI.getCurrent(token);
+    // return token
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
 });

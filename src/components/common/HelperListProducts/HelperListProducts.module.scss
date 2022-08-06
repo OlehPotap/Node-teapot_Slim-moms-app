@@ -1,0 +1,19 @@
+.list {
+  position: absolute;
+  top: 105%;
+  left: 0%;
+  z-index: 10;
+  list-style: none;
+  background-color: #fff;
+}
+
+.item {
+  &:not(last-child) {
+    margin-bottom: 5px;
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}

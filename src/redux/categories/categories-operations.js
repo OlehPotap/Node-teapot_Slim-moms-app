@@ -2,16 +2,15 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import authAPI from '../../shared/api/categoriesApi';
 
-export const allCategories = createAsyncThunk(
-  'categories/getAll',
-  async (_, thunkApi) => {
-    try {
-      await authAPI.getAll();
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
+export const allCategories = createAsyncThunk('categories/getAll', async () => {
+  try {
+    const { data } = await authAPI.getAll();
+
+    return data;
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 export const getForbidenCategories = createAsyncThunk(
   'categories/getForbiden',

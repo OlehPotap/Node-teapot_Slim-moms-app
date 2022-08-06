@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8081/api';
+axios.defaults.baseURL = 'http://localhost:3333/api';
 
 const addToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -13,7 +13,7 @@ const removeToken = () => {
 // Для примера оставил закомментированным некоторый код из материалов которые дал Богдан.
 
 const signup = async owner => {
-  const {data} = await axios.post("/users/register", owner);
+  const { data } = await axios.post('/users/register', owner);
   addToken(data.token);
   return data;
 };
@@ -32,7 +32,7 @@ const logout = async () => {
 
 const getCurrent = async token => {
   addToken(token);
-  const {data: result} = await axios.get("/users/current");
+  const { data: result } = await axios.get('/users/current');
   return result;
 };
 

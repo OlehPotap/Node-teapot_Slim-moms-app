@@ -1,0 +1,88 @@
+.diary {
+  position: relative;
+  margin-top: 150px;
+}
+
+.diaryForm {
+  &__dataPicker {
+    width: 20%;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 41px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 60px;
+  }
+  .fields__cover {
+    position: relative;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 11%;
+    left: 18%;
+    pointer-events: none;
+  }
+
+  &__cover {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    &:not(last-child) {
+      margin-right: 48px;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+    &_last {
+      text-align: right;
+    }
+  }
+
+  &__fields {
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    appearance: none;
+    outline: none;
+    width: 250px;
+  }
+
+  &__gram {
+    text-align: right;
+    width: 107px;
+  }
+
+  &__btn {
+    position: relative;
+    padding: 18px 18px;
+    background-color: #fc842d;
+    border: 3px solid #fc842d;
+    border-radius: 50px;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+
+    &_plus {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: #000000;
+    }
+  }
+}

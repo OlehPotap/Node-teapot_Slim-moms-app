@@ -3,6 +3,9 @@ import DatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { find, filter } from 'lodash';
+// import Moment from 'moment';
+import { format } from "date-fns";
+// import { uk } from "date-fns/locale";
 
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -44,13 +47,13 @@ const DiaryAddProductForm = () => {
   const addProductFromTheForm = async () => {
     const inf = await getInfoOnChoice();
     const body = {
-      categories: inf.categories,
+      date: format(startDate, "yyyyMMdd"),
+    product: {
       weight: +gram,
       title: inf.title,
       calories: (Number(gram) / 100) * inf.calories,
-      groupBloodNotAllowed: inf.groupBloodNotAllowed,
-      date: startDate,
-    };
+    },
+  };
     dispatch(addProduct(body));
     setSearch('')
     setGram('');

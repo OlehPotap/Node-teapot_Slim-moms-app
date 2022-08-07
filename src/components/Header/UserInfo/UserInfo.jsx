@@ -26,7 +26,10 @@ export default function UserInfo() {
         <button
           type="button"
           className={`${s['logout-btn']} ${s.btn}`}
-          onClick={() => dispatch(logout())}
+          onClick={() => {
+            // console.log()
+            dispatch(logout(user))
+          }}
         >
           Exit
         </button>

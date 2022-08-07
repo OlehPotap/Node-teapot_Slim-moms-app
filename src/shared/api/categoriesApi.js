@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3333/api';
+axios.defaults.baseURL = 'http://localhost:8081/api';
 
 // const addToken = token => {
 //     axios.defaults.headers.common.Authorization = `Bearer ${token}`;

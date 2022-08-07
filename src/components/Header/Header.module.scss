@@ -12,11 +12,16 @@
   border-bottom: 2px solid #e0e0e0;
   font-family: GothamPro;
   position: relative;
+  @include mq(tablet) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
   @include mq(desktop) {
     justify-content: flex-start;
     border-bottom: none;
     padding-top: 80px;
+    padding-left: 16px;
   }
 }
 

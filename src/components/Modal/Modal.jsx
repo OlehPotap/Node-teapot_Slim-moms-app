@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import FrobidenProductsList from './ForbidenProductsList';
+import FrobidenProductsList from '../../components/CalculatorСalorieForm/ForbidenProductsList/ForbidenProductsList';
 import { NavLink } from 'react-router-dom';
 import sprite from '../../assets/images/symbol-defs.svg';
 

@@ -25,7 +25,7 @@ const login = async owner => {
 };
 
 const logout = async () => {
-  await axios.post('/users/logout');
+  await axios.get('/users/logout');
   removeToken();
   // return data;
 };

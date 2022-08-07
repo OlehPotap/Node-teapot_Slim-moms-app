@@ -15,7 +15,9 @@ function Header() {
   return (
     <header className={s.header}>
       <div>
+
         {isLogin ? <NavLink to="/diary" exact="true">
+
           {isLogin ? (
             <img
               className={s['logo-mobile-login']}
@@ -42,6 +44,7 @@ function Header() {
           <img className={s['logo-desktop']} src={logoDesktop} alt="logo" />
         </NavLink>
       }
+
         
       </div>
       {isLogin ? (

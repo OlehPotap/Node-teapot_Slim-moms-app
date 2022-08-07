@@ -1,19 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { filter, map } from 'lodash';
-import { changeFilter } from '../../../redux/categories/categories-slice';
 import {
-  getFilter,
   getAllCategories,
 } from '../../../redux/categories/categories-selectors';
 import s from './HelperListProducts.module.scss';
 
-const HelperListProducts = () => {
+const HelperListProducts = ({search, setSearch}) => {
+  
   const productList = useSelector(getAllCategories);
-  const filtered = useSelector(getFilter);
-  const dispatch = useDispatch();
 
   const filteredProduct = () => {
-    const normalizeProductName = filtered?.toLowerCase();
+    const normalizeProductName = search?.toLowerCase();
     const uaTitle = map(productList, item => item.title.ua);
     return filter(uaTitle, item =>
       item.toLowerCase().includes(normalizeProductName)
@@ -28,7 +25,7 @@ const HelperListProducts = () => {
           <li key={item} className={s.item}>
             <button
               className={s.item__btn}
-              onClick={() => dispatch(changeFilter(item))}
+              onClick={() => setSearch(item)}
               type="button"
             >
               {item}

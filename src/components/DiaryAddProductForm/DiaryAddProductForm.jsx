@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { find, filter } from 'lodash';
+
 
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DiaryAddProductForm.module.scss';
@@ -10,27 +11,30 @@ import s from './DiaryAddProductForm.module.scss';
 import sprite from '../../assets/images/symbol-defs.svg';
 
 import {
-  getFilter,
   getAllCategories,
 } from '../../redux/categories/categories-selectors';
-import { changeFilter } from '../../redux/categories/categories-slice';
 import HelperListProducts from '../common/HelperListProducts/HelperListProducts';
 import { addProduct } from '../../redux/products/products-operations';
 
 const DiaryAddProductForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [gram, setGram] = useState('');
+  const [search, setSearch] = useState('');
   const dispatch = useDispatch();
-  const productName = useSelector(getFilter);
   const productList = useSelector(getAllCategories);
 
+
+  useEffect(()=>{
+  },[productList])
+
+
   const getInfoOnChoice = () => {
-    const getInf = find(productList, item => item.title.ua === productName);
+    const getInf = find(productList, el => el.title.ua === search);
     return getInf;
   };
 
   const checkProduct = () => {
-    const normalizeProductName = productName?.toLowerCase();
+    const normalizeProductName = search?.toLowerCase();
     const filtered = filter(productList, item =>
       item?.title?.ua?.toLowerCase().includes(normalizeProductName)
     );
@@ -48,19 +52,19 @@ const DiaryAddProductForm = () => {
       date: startDate,
     };
     dispatch(addProduct(body));
-    dispatch(changeFilter(''));
+    setSearch('')
     setGram('');
     startDate(new Date());
   };
 
   const checkIsMount =
-    !!checkProduct() && checkProduct() < 25 && checkProduct() !== 1;
+    !!checkProduct() && search !=='' && checkProduct() !== 1;
 
   return (
     <div className={s.diary}>
-      {checkIsMount && <HelperListProducts />}
+      {checkIsMount && <HelperListProducts search={search} setSearch={(text)=>setSearch(text)}/>}
       <Formik
-        initialValues={{ products: productName, datapicker: startDate, gram }}
+        initialValues={{ products: search, datapicker: startDate, gram }}
         onSubmit={() => addProductFromTheForm()}
       >
         {({ handleChange }) => (
@@ -87,10 +91,10 @@ const DiaryAddProductForm = () => {
                   id="product"
                   name="products"
                   as="input"
-                  value={productName}
+                  value={search}
                   onChange={e => {
                     handleChange(e);
-                    return dispatch(changeFilter(e.target.value));
+                    setSearch(e.target.value);
                   }}
                   className={s.diaryForm__fields}
                 ></Field>

@@ -26,9 +26,9 @@ const NotFoundPage = lazy(() =>
 
 function App() {
   const dispatch = useDispatch()
-  useEffect (()=>{
-    dispatch(current()) //  eslint-disable-next-line
-  }, [])
+  // useEffect (()=>{
+  //   dispatch(current()) //  eslint-disable-next-line
+  // }, [])
   return (
     <>
       <Header />

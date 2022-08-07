@@ -39,9 +39,6 @@ const Modal = ({ handleClose, children, givenCalories, givenProducts }) => {
 
     return () => document.removeEventListener('keydown', close);
   });
-
-  console.log(givenProducts);
-
   const close = e => {
     if (e.code === 'Escape') {
       return handleClose();

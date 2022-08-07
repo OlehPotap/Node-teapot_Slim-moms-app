@@ -1,43 +1,58 @@
 @import '../../assets/sass/mixins.scss';
 
+.container {
+  margin: 0;
+  background-color: #fc842d;
+}
 .section {
-  font-family: 'Verdana', sans-serif;
-  margin-top: 147px;
-  //   padding-top: 40px;
-  //   padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+
   @include mq(tablet) {
-    // padding-top: 160px;
+    margin-top: 100px;
+    padding-left: 32px;
+    align-items: flex-start;
   }
   @include mq(desktop) {
-    // padding-top: 160px;
+    margin-top: 147px;
+    padding-left: 16px;
+  }
+
+  .title {
+    font-size: 18px;
+    @include mq(tablet) {
+      font-size: 34px;
+    }
   }
   .form {
-    margin-top: 68px;
+    margin-top: 32px;
+    @include mq(tablet) {
+      margin-top: 68px;
+    }
   }
 
   .fieldsWrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 240px);
-    grid-column-gap: 32px;
-    grid-row-gap: 1em;
-
-    p {
-      // position:absolute;
-      // top: -10px;
-      // right: -18px;
-      margin-bottom: 0px;
-
-      font-style: normal;
-      font-weight: 700;
-      font-size: 11px;
-      line-height: 17px;
-      color: rgb(217 120 74);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 25px 32px;
+    width: 240px;
+    @include mq(tablet) {
+      height: 205px;
+      flex-wrap: wrap;
     }
   }
 
   .fieldWrapper {
-    margin-left: 10px;
     position: relative;
+    @include mq(tablet) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .textLabel {
@@ -59,6 +74,7 @@
   }
   .input {
     background-color: transparent;
+    margin-top: 8px;
     width: 100%;
     left: 16px;
     border: none;
@@ -80,11 +96,13 @@
   .radioGroup {
     position: absolute;
     width: 240px;
-    top: 37px;
-    padding-top: 8px;
-    border-top: 1px solid #e0e0e0;
+    padding-top: 25px;
+    // border-top: 1px solid #e0e0e0;
     display: grid;
     grid-template-columns: repeat(4, 50px);
+    @include mq(tablet) {
+      padding-top: 35px;
+    }
   }
 }
 
@@ -126,23 +144,16 @@
 }
 
 .submitButton {
-  position: absolute;
-  left: 270px;
-  top: 318px;
-  min-width: 210px;
-  padding: 13px 51px 13px 50px;
-  margin-top: 60px;
-  margin-left: auto;
-  margin-right: auto;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  text-align: center;
-  text-decoration: none;
+  justify-content: center;
+  width: 210px;
+  height: 43px;
+  margin-top: 60px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  font-weight: 700;
+  line-height: 1.21;
   letter-spacing: 0.04em;
   cursor: pointer;
   color: #ffffff;
@@ -156,6 +167,16 @@
     background-color: #ffffff;
     box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
     border-radius: 30px;
+  }
+  @include mq(tablet) {
+    position: absolute;
+    left: 0;
+    bottom: -95px;
+    margin-top: 0;
+  }
+
+  @include mq(desktop) {
+    left: 300px;
   }
 }
 

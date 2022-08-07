@@ -1,12 +1,12 @@
-@import "../../../assets/sass/mixins.scss";
+@import '../../../assets/sass/mixins.scss';
 
 .container {
-    @include mq(tablet) {
-      position: relative;
-      width: 768px;
-      margin: 0 auto;
-    }
-    @include mq(desktop) {
-      width: 1280px;
-    }
+  @include mq(tablet) {
+    position: relative;
+    width: 768px;
+    // margin: 0 auto;
   }
+  @include mq(desktop) {
+    width: 1280px;
+  }
+}

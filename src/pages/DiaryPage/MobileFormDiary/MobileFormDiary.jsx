@@ -46,6 +46,7 @@ const MobileFormDiary = () => {
       groupBloodNotAllowed: inf.groupBloodNotAllowed,
       date: startDate,
     };
+    console.log('~ body', body);
     dispatch(addProduct(body));
     dispatch(changeFilter(''));
     setGram('');
@@ -54,7 +55,6 @@ const MobileFormDiary = () => {
 
   const checkIsMount =
     !!checkProduct() && search !== '' && checkProduct() !== 1;
-  console.log('~ checkIsMount', checkIsMount);
 
   return (
     <div className={s.diary}>

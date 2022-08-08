@@ -21,8 +21,14 @@ const DiaryPage = () => {
     <>
       <Container>
         <PrivatePagesBG />
-        {isMobile ? <DiaryPageMobile /> : <DiaryAddProductForm />}
-        <DiaryProductsList />
+        {isMobile ? (
+          <DiaryPageMobile>
+            <DiaryProductsList />
+          </DiaryPageMobile>
+        ) : (
+          <DiaryAddProductForm />
+        )}
+        {!isMobile && <DiaryProductsList />}
       </Container>
       <RightSideBar />
     </>

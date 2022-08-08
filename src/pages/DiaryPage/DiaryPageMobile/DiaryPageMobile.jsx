@@ -1,33 +1,18 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { filter } from 'lodash';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DiaryPageMobile.module.scss';
 
 import sprite from '../../../assets/images/symbol-defs.svg';
+import { getData } from '../../../redux/categories/categories-selectors';
 
-import {
-  getFilter,
-  getAllCategories,
-} from '../../../redux/categories/categories-selectors';
 import { changeData } from '../../../redux/categories/categories-slice';
 
 const DiaryPageMobile = ({ children }) => {
   const dispatch = useDispatch();
-  const productName = useSelector(getFilter);
-  const productList = useSelector(getAllCategories);
-
-  const checkProduct = () => {
-    const normalizeProductName = productName?.toLowerCase();
-    const filtered = filter(productList, item =>
-      item?.title?.ua?.toLowerCase().includes(normalizeProductName)
-    );
-    return filtered?.length;
-  };
+  const dateValue = useSelector(getData);
 
   return (
     <div className={s.cover}>
@@ -37,8 +22,8 @@ const DiaryPageMobile = ({ children }) => {
             dateFormat="dd.MM.yyyy"
             maxDate={new Date()}
             name="datapicker"
-            selected={new Date()}
-            onChange={date => dispatch(changeData(date))}
+            selected={new Date(dateValue)}
+            onChange={date => dispatch(changeData(date.toString()))}
             className={s.fields__dataPicker}
           />
           <svg width="20" height="20" className={s.fields__icon}>

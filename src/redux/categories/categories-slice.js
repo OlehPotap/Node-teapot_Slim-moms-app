@@ -4,7 +4,7 @@ import { allCategories, getForbidenCategories } from './categories-operations';
 
 const initialState = {
   categories: [],
-  dataPicker: '',
+  dataPicker: new Date().toISOString(),
   error: null,
   loading: false,
   filter: '',

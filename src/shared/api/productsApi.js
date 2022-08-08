@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3333/api/';
+axios.defaults.baseURL = 'http://localhost:8081/api/';
 
 const addToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -12,15 +12,16 @@ const getAll = async owner => {
   // return result;
 };
 
-const add = async data => {
+const add = async info => {
   try {
-    return await axios
-      .post('products', data)
-      .then(data => addToken(data.token));
+    const {data} = await axios
+      .post('/diary/add', info)
+      return data
   } catch (error) {
     console.error(error.message);
   }
 };
+
 
 const remove = async id => {
   // const {id: result} = await axios.delete("/products", id);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import FrobidenProductsList from './ForbidenProductsList';
+import FrobidenProductsList from '../../components/CalculatorСalorieForm/ForbidenProductsList/ForbidenProductsList';
 import { NavLink } from 'react-router-dom';
 import sprite from '../../assets/images/symbol-defs.svg';
 
@@ -39,9 +39,6 @@ const Modal = ({ handleClose, children, givenCalories, givenProducts }) => {
 
     return () => document.removeEventListener('keydown', close);
   });
-
-  console.log(givenProducts);
-
   const close = e => {
     if (e.code === 'Escape') {
       return handleClose();

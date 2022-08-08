@@ -2,13 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import authAPI from '../../shared/api/categoriesApi';
 
-export const allCategories = createAsyncThunk('categories/getAll', async () => {
+export const allCategories = createAsyncThunk('categories/getAll', async (_, thunkApi) => {
   try {
     const { data } = await authAPI.getAll();
 
     return data;
   } catch (error) {
-    console.log(error);
+    return thunkApi.rejectWithValue(error.message);
   }
 });
 
@@ -36,3 +36,5 @@ export const getForbidenCategories = createAsyncThunk(
     }
   }
 );
+
+

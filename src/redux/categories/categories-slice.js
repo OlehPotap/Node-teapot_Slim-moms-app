@@ -6,6 +6,7 @@ const initialState = {
   categories: [],
   error: null,
   loading: false,
+  filter: ''
 };
 
 const categoriesReducer = createSlice({
@@ -25,7 +26,6 @@ const categoriesReducer = createSlice({
       state.error = null;
     },
     [allCategories.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.error = payload;
     },
@@ -34,14 +34,11 @@ const categoriesReducer = createSlice({
       state.error = null;
     },
     [getForbidenCategories.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.categories = [...payload];
-      // state.categories = state.categories.push(payload);
       state.loading = false;
       state.error = null;
     },
     [getForbidenCategories.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.error = payload;
     },

@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { getForbidenCategories } from '../../redux/categories/categories-operations';
 
-
 const CalculatorCalorieForm = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(getIslogin);
@@ -31,7 +30,7 @@ const CalculatorCalorieForm = () => {
   return (
     <div className={s.section}>
       {isLoading && <Loader />}
-      <h1>
+      <h1 className={s.title}>
         Calculate your daily calorie <br /> intake right now
       </h1>
       <Formik
@@ -51,11 +50,10 @@ const CalculatorCalorieForm = () => {
             161 -
             10 * (values.currentWeight - values.desiredWeight);
           setCalories(calcCalories);
-          if(!isLogin) {
+          if (!isLogin) {
             dispatch(getForbidenCategories(values));
             ShowModal();
           } else {
-            
           }
         }}
       >
@@ -80,24 +78,6 @@ const CalculatorCalorieForm = () => {
               />
             </div>
             <div className={s.fieldWrapper}>
-              <label className={s.textLabel} htmlFor="desiredWeight">
-                Desired Weight *
-              </label>
-              <Field
-                className={s.input}
-                id="desiredWeight"
-                name="desiredWeight"
-                type="number"
-                autoComplete="off"
-              />
-              <ErrorMessage
-                name="desiredWeight"
-                render={err => {
-                  return <p>{err}</p>;
-                }}
-              />
-            </div>
-            <div className={s.fieldWrapper}>
               <label className={s.textLabel} htmlFor="age">
                 Age *
               </label>
@@ -110,6 +90,42 @@ const CalculatorCalorieForm = () => {
               />
               <ErrorMessage
                 name="age"
+                render={err => {
+                  return <p>{err}</p>;
+                }}
+              />
+            </div>
+            <div className={s.fieldWrapper}>
+              <label className={s.textLabel} htmlFor="currentWeight">
+                Current Weight *
+              </label>
+              <Field
+                className={s.input}
+                id="currentWeight"
+                name="currentWeight"
+                type="number"
+                autoComplete="off"
+              />
+              <ErrorMessage
+                name="currentWeight"
+                render={err => {
+                  return <p>{err}</p>;
+                }}
+              />
+            </div>
+            <div className={s.fieldWrapper}>
+              <label className={s.textLabel} htmlFor="desiredWeight">
+                Desired Weight *
+              </label>
+              <Field
+                className={s.input}
+                id="desiredWeight"
+                name="desiredWeight"
+                type="number"
+                autoComplete="off"
+              />
+              <ErrorMessage
+                name="desiredWeight"
                 render={err => {
                   return <p>{err}</p>;
                 }}
@@ -168,26 +184,8 @@ const CalculatorCalorieForm = () => {
                 }}
               />
             </div>
-            <div className={s.fieldWrapper}>
-              <label className={s.textLabel} htmlFor="currentWeight">
-                Current Weight *
-              </label>
-              <Field
-                className={s.input}
-                id="currentWeight"
-                name="currentWeight"
-                type="number"
-                autoComplete="off"
-              />
-              <ErrorMessage
-                name="currentWeight"
-                render={err => {
-                  return <p>{err}</p>;
-                }}
-              />
-            </div>
             <button className={s.submitButton} type="submit">
-              Start losing Weight
+              Start losing weight
             </button>
           </div>
         </Form>

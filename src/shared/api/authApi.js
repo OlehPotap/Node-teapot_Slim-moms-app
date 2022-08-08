@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3333/api';
+axios.defaults.baseURL = 'http://localhost:8081/api';
 
 const addToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -25,7 +25,7 @@ const login = async owner => {
 };
 
 const logout = async () => {
-  await axios.post('/users/logout');
+  await axios.get('/users/logout');
   removeToken();
   // return data;
 };

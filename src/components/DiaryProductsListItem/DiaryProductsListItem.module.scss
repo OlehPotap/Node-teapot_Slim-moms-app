@@ -1,0 +1,67 @@
+@import '../../assets/sass/common';
+@import '../../assets/sass/rootColors';
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/stylesheet';
+
+.item {
+  display: flex;
+  gap: 8px;
+  font-weight: 400;
+  min-width: 280px;
+  @include mq(tablet) {
+    gap: 22px;
+  }
+  @include mq(desktop) {
+    gap: 48px;
+  }
+  p {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+}
+
+.product {
+  min-width: 130px;
+  @include mq(tablet) {
+    min-width: 240px;
+  }
+  @include mq(desktop) {
+  }
+}
+
+.weight {
+  min-width: 49px;
+  @include mq(tablet) {
+    min-width: 106px;
+  }
+  @include mq(desktop) {
+  }
+}
+
+.calories {
+  min-width: 60px;
+  @include mq(tablet) {
+    min-width: 106px;
+  }
+  @include mq(desktop) {
+  }
+}
+
+.icon {
+  width: 10px;
+  height: 10px;
+  @include mq(tablet) {
+    width: 12px;
+    height: 12px;
+  }
+  @include mq(desktop) {
+  }
+}
+
+.btn {
+  margin-left: 9px;
+  @include mq(tablet) {
+  }
+  @include mq(desktop) {
+  }
+}

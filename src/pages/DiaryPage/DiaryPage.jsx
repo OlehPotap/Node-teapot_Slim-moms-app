@@ -4,6 +4,7 @@ import Container from '../../components/common/Container';
 import PrivatePagesBG from '../../components/PrivatePagesBG';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm/DiaryAddProductForm';
 import { allCategories } from '../../redux/categories/categories-operations';
+import DiaryProductsList from '../../components/DiaryProductsList/DiaryProductsList';
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const DiaryPage = () => {
     <Container>
       <PrivatePagesBG />
       <DiaryAddProductForm />
+      <DiaryProductsList />
     </Container>
     // <section className={s.diarySection}>
     //   {state && (

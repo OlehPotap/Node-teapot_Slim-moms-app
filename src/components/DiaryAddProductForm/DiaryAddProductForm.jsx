@@ -3,42 +3,34 @@ import DatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { find, filter } from 'lodash';
-// import Moment from 'moment';
-import { format } from "date-fns";
-// import { uk } from "date-fns/locale";
-
-
+import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DiaryAddProductForm.module.scss';
-
 import sprite from '../../assets/images/symbol-defs.svg';
-
-import {
-  getAllCategories,
-} from '../../redux/categories/categories-selectors';
+import { getAllCategories } from '../../redux/categories/categories-selectors';
 import HelperListProducts from '../common/HelperListProducts/HelperListProducts';
 import { addProduct } from '../../redux/products/products-operations';
+import { useNavigate } from 'react-router-dom';
 
 const DiaryAddProductForm = () => {
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [gram, setGram] = useState('');
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
-  const productList = useSelector(getAllCategories);
+  const categoriesList = useSelector(getAllCategories);
 
-
-  useEffect(()=>{
-  },[productList])
-
-
+  useEffect(() => {
+    navigate({ search: `date=${format(new Date(), 'yyyyMMdd')}` }); // eslint-disable-next-line
+  }, []);
   const getInfoOnChoice = () => {
-    const getInf = find(productList, el => el.title.ua === search);
+    const getInf = find(categoriesList, el => el.title.ua === search);
     return getInf;
   };
 
   const checkProduct = () => {
     const normalizeProductName = search?.toLowerCase();
-    const filtered = filter(productList, item =>
+    const filtered = filter(categoriesList, item =>
       item?.title?.ua?.toLowerCase().includes(normalizeProductName)
     );
     return filtered?.length;
@@ -47,25 +39,34 @@ const DiaryAddProductForm = () => {
   const addProductFromTheForm = async () => {
     const inf = await getInfoOnChoice();
     const body = {
-      date: format(startDate, "yyyyMMdd"),
-    product: {
-      weight: +gram,
-      title: inf.title,
-      calories: (Number(gram) / 100) * inf.calories,
-    },
-  };
+      date: format(startDate, 'yyyyMMdd'),
+      product: {
+        weight: +gram,
+        title: inf.title,
+        calories: (Number(gram) / 100) * inf.calories,
+      },
+    };
+
     dispatch(addProduct(body));
-    setSearch('')
+    setSearch('');
     setGram('');
-    startDate(new Date());
+    navigate({ search: `date=` });
+    setTimeout(() => {
+      navigate({ search: `date=${body.date}` });
+    }, 0);
   };
 
   const checkIsMount =
-    !!checkProduct() && search !=='' && checkProduct() !== 1;
+    !!checkProduct() && search !== '' && checkProduct() !== 1;
 
   return (
     <div className={s.diary}>
-      {checkIsMount && <HelperListProducts search={search} setSearch={(text)=>setSearch(text)}/>}
+      {checkIsMount && (
+        <HelperListProducts
+          search={search}
+          setSearch={text => setSearch(text)}
+        />
+      )}
       <Formik
         initialValues={{ products: search, datapicker: startDate, gram }}
         onSubmit={() => addProductFromTheForm()}
@@ -79,7 +80,10 @@ const DiaryAddProductForm = () => {
                 maxDate={new Date()}
                 name="datapicker"
                 selected={startDate}
-                onChange={date => setStartDate(date)}
+                onChange={date => {
+                  setStartDate(date);
+                  navigate({ search: `date=${format(date, 'yyyyMMdd')}` });
+                }}
                 className={s.diaryForm__dataPicker}
               />
               <svg width="20" height="20" className={s.diaryForm__icon}>

@@ -5,7 +5,7 @@ import Container from '../../components/common/Container';
 import PrivatePagesBG from '../../components/PrivatePagesBG';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm/DiaryAddProductForm';
 import { allCategories } from '../../redux/categories/categories-operations';
-import DiaryPageMobile from './DiaryPageMobile';
+import DiaryPageMobile from './DiaryPageMobile/DiaryPageMobile';
 
 import DiaryProductsList from '../../components/DiaryProductsList/DiaryProductsList';
 

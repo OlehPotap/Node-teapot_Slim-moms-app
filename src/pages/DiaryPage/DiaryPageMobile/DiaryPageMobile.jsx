@@ -8,13 +8,13 @@ import { filter } from 'lodash';
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DiaryPageMobile.module.scss';
 
-import sprite from '../../assets/images/symbol-defs.svg';
+import sprite from '../../../assets/images/symbol-defs.svg';
 
 import {
   getFilter,
   getAllCategories,
-} from '../../redux/categories/categories-selectors';
-import { changeData } from '../../redux/categories/categories-slice';
+} from '../../../redux/categories/categories-selectors';
+import { changeData } from '../../../redux/categories/categories-slice';
 
 const DiaryPageMobile = ({ children }) => {
   const dispatch = useDispatch();

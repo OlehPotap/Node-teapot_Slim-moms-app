@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { find, filter } from 'lodash';
-import HelperListProducts from '../HelperListProducts/HelperListProducts';
+import HelperListProducts from '../../../components/common/HelperListProducts/HelperListProducts';
 import s from './MobileFormDiary.module.scss';
 import { changeFilter } from '../../../redux/categories/categories-slice';
 import {
@@ -11,7 +11,6 @@ import {
 } from '../../../redux/categories/categories-selectors';
 import { addProduct } from '../../../redux/products/products-operations';
 import { allCategories } from '../../../redux/categories/categories-operations';
-import { useState } from 'react';
 
 const MobileFormDiary = () => {
   const dispatch = useDispatch();

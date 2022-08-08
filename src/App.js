@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux/es/exports.js';
 import { current } from './redux/auth/auth-operations.js';
-import MobileFormDiary from './components/common/MobileFormDiary/MobileFormDiary.jsx';
+import MobileFormDiary from './pages/DiaryPage/MobileFormDiary/MobileFormDiary.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const RegisterPage = lazy(() =>
@@ -40,11 +40,11 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Route>
-        <Route element={<PrivateRoute />}>
-          <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/calculator" element={<CalculatorPage />} />
-          <Route path="/diary/add-mobile" element={<MobileFormDiary />} />
-        </Route>
+        {/* <Route element={<PrivateRoute />}> */}
+        <Route path="/diary" element={<DiaryPage />} />
+        <Route path="/calculator" element={<CalculatorPage />} />
+        <Route path="/diary/add-mobile" element={<MobileFormDiary />} />
+        {/* </Route> */}
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

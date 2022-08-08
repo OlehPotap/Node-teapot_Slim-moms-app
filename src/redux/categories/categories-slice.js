@@ -4,15 +4,17 @@ import { allCategories, getForbidenCategories } from './categories-operations';
 
 const initialState = {
   categories: [],
+  dataPicker: new Date().toISOString(),
   error: null,
   loading: false,
-  filter: ''
+  filter: '',
 };
 
 const categoriesReducer = createSlice({
   name: 'categories',
   initialState,
   reducers: {
+    changeData: (state, action) => ({ ...state, dataPicker: action.payload }),
     changeFilter: (state, action) => ({ ...state, filter: action.payload }),
   },
   extraReducers: {
@@ -45,6 +47,6 @@ const categoriesReducer = createSlice({
   },
 });
 
-export const { changeFilter } = categoriesReducer.actions;
+export const { changeFilter, changeData } = categoriesReducer.actions;
 
 export default categoriesReducer.reducer;

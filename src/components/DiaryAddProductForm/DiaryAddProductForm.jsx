@@ -4,18 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { find, filter } from 'lodash';
 // import Moment from 'moment';
-import { format } from "date-fns";
+import { format } from 'date-fns';
 // import { uk } from "date-fns/locale";
-
 
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DiaryAddProductForm.module.scss';
 
 import sprite from '../../assets/images/symbol-defs.svg';
 
-import {
-  getAllCategories,
-} from '../../redux/categories/categories-selectors';
+import { getAllCategories } from '../../redux/categories/categories-selectors';
 import HelperListProducts from '../common/HelperListProducts/HelperListProducts';
 import { addProduct } from '../../redux/products/products-operations';
 import {useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -38,8 +35,6 @@ const DiaryAddProductForm = () => {
   useEffect(()=>{
     navigate({search: `date=${format(new Date(), "yyyyMMdd")}`})
   },[])
-
-
   const getInfoOnChoice = () => {
     const getInf = find(categoriesList, el => el.title.ua === search);
     return getInf;
@@ -63,9 +58,9 @@ const DiaryAddProductForm = () => {
       calories: (Number(gram) / 100) * inf.calories,
     },
   };
-  
+
     dispatch(addProduct(body));
-    setSearch('')
+    setSearch('');
     setGram('');
     navigate({search: `date=`})
     setTimeout(()=>{
@@ -76,11 +71,16 @@ const DiaryAddProductForm = () => {
   };
 
   const checkIsMount =
-    !!checkProduct() && search !=='' && checkProduct() !== 1;
+    !!checkProduct() && search !== '' && checkProduct() !== 1;
 
   return (
     <div className={s.diary}>
-      {checkIsMount && <HelperListProducts search={search} setSearch={(text)=>setSearch(text)}/>}
+      {checkIsMount && (
+        <HelperListProducts
+          search={search}
+          setSearch={text => setSearch(text)}
+        />
+      )}
       <Formik
         initialValues={{ products: search, datapicker: startDate, gram }}
         onSubmit={() => addProductFromTheForm()}

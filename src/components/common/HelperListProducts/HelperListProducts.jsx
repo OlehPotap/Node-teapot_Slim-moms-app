@@ -1,12 +1,9 @@
 import { useSelector } from 'react-redux';
 import { filter, map } from 'lodash';
-import {
-  getAllCategories,
-} from '../../../redux/categories/categories-selectors';
+import { getAllCategories } from '../../../redux/categories/categories-selectors';
 import s from './HelperListProducts.module.scss';
 
-const HelperListProducts = ({search, setSearch}) => {
-  
+const HelperListProducts = ({ search, setSearch }) => {
   const productList = useSelector(getAllCategories);
 
   const filteredProduct = () => {

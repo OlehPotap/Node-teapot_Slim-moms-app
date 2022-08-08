@@ -22,7 +22,7 @@ const DiaryProductsList = () => {
   return (
     <div className={s.products}>
       <ul className={s.list}>{
-        dailyProducts.map(el => {
+        dailyProducts?.map(el => {
           return (
             <DiaryProductsListItem
               title={el.title.ua}

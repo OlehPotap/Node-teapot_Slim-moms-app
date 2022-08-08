@@ -1,1 +1,1 @@
-export const geAllDailyProducts = ( state ) => state.products.productsList;
+export const geAllDailyProducts = ( state ) => state.products?.productsList;

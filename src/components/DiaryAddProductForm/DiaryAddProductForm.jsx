@@ -18,27 +18,36 @@ import {
 } from '../../redux/categories/categories-selectors';
 import HelperListProducts from '../common/HelperListProducts/HelperListProducts';
 import { addProduct } from '../../redux/products/products-operations';
+import {useLocation, useNavigate, useParams } from 'react-router-dom';
+import { getDailyProducts } from '../../redux/products/products-operations';
+import DiaryProductsList from '../DiaryProductsList/DiaryProductsList';
+import { geAllDailyProducts } from '../../redux/products/products-selectors';
 
 const DiaryAddProductForm = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [productsList, setProductsList] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [gram, setGram] = useState('');
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
-  const productList = useSelector(getAllCategories);
-
+  const categoriesList = useSelector(getAllCategories);
+  // let event = event
+  
 
   useEffect(()=>{
-  },[productList])
+    navigate({search: `date=${format(new Date(), "yyyyMMdd")}`})
+  },[])
 
 
   const getInfoOnChoice = () => {
-    const getInf = find(productList, el => el.title.ua === search);
+    const getInf = find(categoriesList, el => el.title.ua === search);
     return getInf;
   };
 
   const checkProduct = () => {
     const normalizeProductName = search?.toLowerCase();
-    const filtered = filter(productList, item =>
+    const filtered = filter(categoriesList, item =>
       item?.title?.ua?.toLowerCase().includes(normalizeProductName)
     );
     return filtered?.length;
@@ -54,10 +63,16 @@ const DiaryAddProductForm = () => {
       calories: (Number(gram) / 100) * inf.calories,
     },
   };
+  
     dispatch(addProduct(body));
     setSearch('')
     setGram('');
-    startDate(new Date());
+    navigate({search: `date=`})
+    setTimeout(()=>{
+      navigate({search: `date=${body.date}`})
+    }, 0)
+    
+    // setStartDate(new Date());
   };
 
   const checkIsMount =
@@ -79,7 +94,10 @@ const DiaryAddProductForm = () => {
                 maxDate={new Date()}
                 name="datapicker"
                 selected={startDate}
-                onChange={date => setStartDate(date)}
+                onChange={date => {
+                  setStartDate(date);
+                  navigate({search: `date=${format(date, "yyyyMMdd")}`})
+                }}
                 className={s.diaryForm__dataPicker}
               />
               <svg width="20" height="20" className={s.diaryForm__icon}>
@@ -127,6 +145,7 @@ const DiaryAddProductForm = () => {
         )}
       </Formik>
     </div>
+    
   );
 };
 

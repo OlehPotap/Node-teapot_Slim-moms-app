@@ -3,10 +3,14 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:8081/api/';
 
 
-const getAll = async owner => {
-  // const {owner: result} = await axios.get("/products", owner);
-  // addToken(result.token);
-  // return result;
+const getAll = async (date) => {
+  try {
+    const {data} = await axios
+      .get(`/diary/${date}`)
+      return data
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 const add = async info => {
@@ -20,9 +24,9 @@ const add = async info => {
 };
 
 
-const remove = async id => {
-  // const {id: result} = await axios.delete("/products", id);
-  // return result;
+const remove = async data => {
+  const {id: result} = await axios.patch("/delete", data);
+  return result;
 };
 
 const authAPI = {

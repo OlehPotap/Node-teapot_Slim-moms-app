@@ -45,7 +45,7 @@ const RightSideBar = () => {
         <div className={s.categories}>
           <h3 className={s.header}>Food not recommended</h3>
           <p className={s.info}>
-            {forbidenCategories.length > 0
+            {forbidenCategories
               ? forbidenCategories.join(" ")
               : 'Your diet will be displayed here'}
           </p>

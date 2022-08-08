@@ -1,0 +1,1 @@
+export const geAllDailyProducts = ( state ) => state.products.productsList;

@@ -3,17 +3,19 @@ import { useDispatch } from 'react-redux';
 import Container from '../../components/common/Container';
 import PrivatePagesBG from '../../components/PrivatePagesBG';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm/DiaryAddProductForm';
-import { allCategories } from '../../redux/categories/categories-operations';
-
 import DiaryProductsList from '../../components/DiaryProductsList/DiaryProductsList';
 
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
+import { getDailyProducts } from '../../redux/products/products-operations';
+import { format } from 'date-fns';
+
+
 
 const DiaryPage = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(allCategories());
-  // }, [dispatch]);
+  // const dispatch= useDispatch()
+  // useEffect(()=>{
+  //   dispatch(getDailyProducts(format(new Date(), "yyyyMMdd")));
+  // },[dispatch])
   return (
     <>
       <Container>
@@ -22,31 +24,7 @@ const DiaryPage = () => {
         <DiaryProductsList />
       </Container>
       <RightSideBar />
-    </>
-    // <section className={s.diarySection}>
-    //   {state && (
-    //     <DiaryAddProductFormModal closeModal={closeModal}>
-    //       <DiaryAddProductForm closeModal={closeModal} />
-    //     </DiaryAddProductFormModal>
-    //   )}
-
-    // <div className={s.container}>
-    //   <div className={s.dateAndCalendar}>
-    //     {/* <Calendar /> */}
-    //     <img className={s.calendarImage} src="./calendar 1.svg" alt="" />
-    //     <svg width="18" height="20" className={s.calendarImage}>
-    //       {/* подключить иконку календаря */}
-    //       {/* <use href="./symbol-defs.svg.svg#calendar"></use> */}
-    //     </svg>
-    //   </div>
-
-    // {/* {isWide && <DiaryAddProductForm />} */}
-
-    // <DiaryProductList openModalProp={openModal} />
-    // </div>
-
-    // {/* <div className={s.summary}><RightSideBar /></div> */}
-    // </section>
+      </>
   );
 };
 

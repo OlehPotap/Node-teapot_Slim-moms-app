@@ -25,7 +25,7 @@ const add = async info => {
 
 
 const remove = async data => {
-  const {id: result} = await axios.patch("/delete", data);
+  const {data: result} = await axios.patch("/diary/delete", data);
   return result;
 };
 

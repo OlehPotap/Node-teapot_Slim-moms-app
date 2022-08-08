@@ -3,38 +3,26 @@ import DatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { find, filter } from 'lodash';
-// import Moment from 'moment';
 import { format } from 'date-fns';
-// import { uk } from "date-fns/locale";
-
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DiaryAddProductForm.module.scss';
-
 import sprite from '../../assets/images/symbol-defs.svg';
-
 import { getAllCategories } from '../../redux/categories/categories-selectors';
 import HelperListProducts from '../common/HelperListProducts/HelperListProducts';
 import { addProduct } from '../../redux/products/products-operations';
-import {useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getDailyProducts } from '../../redux/products/products-operations';
-import DiaryProductsList from '../DiaryProductsList/DiaryProductsList';
-import { geAllDailyProducts } from '../../redux/products/products-selectors';
+import { useNavigate } from 'react-router-dom';
 
 const DiaryAddProductForm = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const [productsList, setProductsList] = useState([]);
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [gram, setGram] = useState('');
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
   const categoriesList = useSelector(getAllCategories);
-  // let event = event
-  
 
-  useEffect(()=>{
-    navigate({search: `date=${format(new Date(), "yyyyMMdd")}`})
-  },[])
+  useEffect(() => {
+    navigate({ search: `date=${format(new Date(), 'yyyyMMdd')}` }); // eslint-disable-next-line
+  }, []);
   const getInfoOnChoice = () => {
     const getInf = find(categoriesList, el => el.title.ua === search);
     return getInf;
@@ -51,23 +39,21 @@ const DiaryAddProductForm = () => {
   const addProductFromTheForm = async () => {
     const inf = await getInfoOnChoice();
     const body = {
-      date: format(startDate, "yyyyMMdd"),
-    product: {
-      weight: +gram,
-      title: inf.title,
-      calories: (Number(gram) / 100) * inf.calories,
-    },
-  };
+      date: format(startDate, 'yyyyMMdd'),
+      product: {
+        weight: +gram,
+        title: inf.title,
+        calories: (Number(gram) / 100) * inf.calories,
+      },
+    };
 
     dispatch(addProduct(body));
     setSearch('');
     setGram('');
-    navigate({search: `date=`})
-    setTimeout(()=>{
-      navigate({search: `date=${body.date}`})
-    }, 0)
-    
-    // setStartDate(new Date());
+    navigate({ search: `date=` });
+    setTimeout(() => {
+      navigate({ search: `date=${body.date}` });
+    }, 0);
   };
 
   const checkIsMount =
@@ -96,7 +82,7 @@ const DiaryAddProductForm = () => {
                 selected={startDate}
                 onChange={date => {
                   setStartDate(date);
-                  navigate({search: `date=${format(date, "yyyyMMdd")}`})
+                  navigate({ search: `date=${format(date, 'yyyyMMdd')}` });
                 }}
                 className={s.diaryForm__dataPicker}
               />
@@ -145,7 +131,6 @@ const DiaryAddProductForm = () => {
         )}
       </Formik>
     </div>
-    
   );
 };
 

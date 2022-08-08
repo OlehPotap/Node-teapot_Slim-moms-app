@@ -36,11 +36,17 @@ const getCurrent = async token => {
   return result;
 };
 
+const updateUserInfo =  async userInfo => {
+  const { data: result } = await axios.patch('/users/updateUserInfo', userInfo);
+  return result;
+};
+
 const authAPI = {
   signup,
   login,
   logout,
   getCurrent,
+  updateUserInfo
 };
 
 export default authAPI;

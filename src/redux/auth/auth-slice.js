@@ -1,13 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { signup, login, logout, current } from './auth-operations';
+import { signup, login, logout, current, dailyUserInfo } from './auth-operations';
 
 const initialState = {
   user: {
     name: '',
     email: '',
+    userInfo:{},
+    forbidenCategories:[],
+    dailyCaloriesRate:0,
   },
-  token: '',
+  token: null,
   isLogin: false,
   error: null,
   loading: false,
@@ -23,9 +26,9 @@ const authSlice = createSlice({
     },
     [signup.fulfilled]: (state, { payload }) => {
       state.user = { ...payload.user };
-      state.token = payload.token;
+      // state.token = payload.token;
       state.loading = false;
-      state.isLogin = true;
+      // state.isLogin = true;
     },
     [signup.rejected]: (state, { payload }) => {
       state.loading = false;
@@ -51,7 +54,7 @@ const authSlice = createSlice({
     },
     [logout.fulfilled]: state => {
       state.user = { ...initialState.user };
-      state.token = '';
+      state.token = null;
       state.isLogin = false;
       state.loading = false;
     },
@@ -70,6 +73,21 @@ const authSlice = createSlice({
       state.isLogin = true;
     },
     [current.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+    [dailyUserInfo.pending]: state => {
+      state.loading = true;
+      state.error = null;
+    },
+    [dailyUserInfo.fulfilled]: (state, { payload }) => {
+      // console.log(payload)
+      state.user.userInfo = payload.userInfo;
+      state.user.forbidenCategories = payload.forbidenCategories;
+      state.user.dailyCaloriesRate = payload.dailyCaloriesRate;
+      state.loading = false;
+    },
+    [dailyUserInfo.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },

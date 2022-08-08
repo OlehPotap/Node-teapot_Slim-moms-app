@@ -2,12 +2,13 @@ import s from './CalculatorCalorieForm.module.scss';
 import Loader from '../../components/common/Loader/Loader';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
-import { getIsLoading, getIslogin } from '../../redux/auth/auth-selectors';
+import { getIsLoading, getIslogin, getUser } from '../../redux/auth/auth-selectors';
 import * as Yup from 'yup';
 import Modal from '../Modal';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
-import { getForbidenCategories } from '../../redux/categories/categories-operations';
+import {dailyUserInfo} from '../../redux/auth/auth-operations'
+import { getForbidenCategories, } from '../../redux/categories/categories-operations';
 
 const CalculatorCalorieForm = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ const CalculatorCalorieForm = () => {
             dispatch(getForbidenCategories(values));
             ShowModal();
           } else {
+            dispatch(dailyUserInfo({userInfo: values}));
           }
         }}
       >

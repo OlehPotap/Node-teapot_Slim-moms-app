@@ -9,7 +9,6 @@
   margin: 0 auto;
   @include mq(tablet) {
     display: flex;
-    // justify-content: space-between;
     padding-top: 80px;
     padding-bottom: 80px;
     flex-direction: row;
@@ -23,7 +22,7 @@
     float: right;
     flex-direction: column;
     width: 288px;
-    margin-top: -600px;
+    margin-top: -700px;
     margin-right: 130px;
   }
 }

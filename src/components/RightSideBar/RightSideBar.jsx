@@ -1,19 +1,22 @@
 import React from 'react';
 import { format } from 'date-fns';
 import s from './RightSideBar.module.scss';
+import { useSelector } from 'react-redux';
+import { getUser } from '../../redux/auth/auth-selectors';
 
 const RightSideBar = () => {
+  const user = useSelector(getUser)
   // взять данные с стора...
   const data = format(new Date(), 'MM/dd/yyyy');
   const consumedCalories = 0;
-  const dailyRateCalories = 0;
+  const dailyRateCalories = user.dailyCaloriesRate;
   const leftCalories = dailyRateCalories - consumedCalories;
   const percentCalories = isNaN(
     parseInt((consumedCalories / dailyRateCalories) * 100)
   )
     ? 0
     : parseInt((consumedCalories / dailyRateCalories) * 100);
-  const forbidenCategories = '';
+  const forbidenCategories = user.forbidenCategories;
 
   return (
     <div className={s.wrapper}>
@@ -42,8 +45,8 @@ const RightSideBar = () => {
         <div className={s.categories}>
           <h3 className={s.header}>Food not recommended</h3>
           <p className={s.info}>
-            {forbidenCategories
-              ? forbidenCategories
+            {forbidenCategories.length > 0
+              ? forbidenCategories.join(" ")
               : 'Your diet will be displayed here'}
           </p>
         </div>

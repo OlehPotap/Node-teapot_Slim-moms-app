@@ -4,20 +4,28 @@ import { useMediaQuery } from 'react-responsive';
 import Container from '../../components/common/Container';
 import PrivatePagesBG from '../../components/PrivatePagesBG';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm/DiaryAddProductForm';
-import DiaryPageMobile from './DiaryPageMobile';
 import { allCategories } from '../../redux/categories/categories-operations';
+import DiaryPageMobile from './DiaryPageMobile';
+
+import DiaryProductsList from '../../components/DiaryProductsList/DiaryProductsList';
+
+import RightSideBar from '../../components/RightSideBar/RightSideBar';
 
 const DiaryPage = () => {
-  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
-  useEffect(() => {
-    dispatch(allCategories());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(allCategories());
+  // }, [dispatch]);
   return (
-    <Container>
-      <PrivatePagesBG />
-      {isMobile ? <DiaryPageMobile /> : <DiaryAddProductForm />}
-    </Container>
+    <>
+      <Container>
+        <PrivatePagesBG />
+        {isMobile ? <DiaryPageMobile /> : <DiaryAddProductForm />}
+        <DiaryProductsList />
+      </Container>
+      <RightSideBar />
+    </>
     // <section className={s.diarySection}>
     //   {state && (
     //     <DiaryAddProductFormModal closeModal={closeModal}>

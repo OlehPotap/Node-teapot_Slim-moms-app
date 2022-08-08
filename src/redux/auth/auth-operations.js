@@ -36,8 +36,17 @@ export const current = createAsyncThunk('auth/current', async (_, thunkApi) => {
   try {
     const token = thunkApi.getState().auth.token;
     const user = await authAPI.getCurrent(token);
-    console.log(`user`, user)
     return user
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});
+
+export const dailyUserInfo = createAsyncThunk('auth/dailyUserInfo', async (userInfo, thunkApi) => {
+  try {
+    const currentUserInfo = await authAPI.updateUserInfo(userInfo);
+    
+    return currentUserInfo
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
   }

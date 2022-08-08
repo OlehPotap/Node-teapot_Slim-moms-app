@@ -1,15 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import Container from '../../components/common/Container';
 import PrivatePagesBG from '../../components/PrivatePagesBG';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm/DiaryAddProductForm';
 import { allCategories } from '../../redux/categories/categories-operations';
+import DiaryPageMobile from './DiaryPageMobile/DiaryPageMobile';
 
 import DiaryProductsList from '../../components/DiaryProductsList/DiaryProductsList';
 
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
 
 const DiaryPage = () => {
+  const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(allCategories());
@@ -18,8 +21,14 @@ const DiaryPage = () => {
     <>
       <Container>
         <PrivatePagesBG />
-        <DiaryAddProductForm />
-        <DiaryProductsList />
+        {isMobile ? (
+          <DiaryPageMobile>
+            <DiaryProductsList />
+          </DiaryPageMobile>
+        ) : (
+          <DiaryAddProductForm />
+        )}
+        {!isMobile && <DiaryProductsList />}
       </Container>
       <RightSideBar />
     </>

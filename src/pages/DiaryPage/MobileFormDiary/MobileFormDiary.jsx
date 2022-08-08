@@ -1,32 +1,30 @@
-import { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import { find, filter } from 'lodash';
-// import Moment from 'moment';
-import { format } from 'date-fns';
-// import { uk } from "date-fns/locale";
+import HelperListProducts from '../../../components/common/HelperListProducts/HelperListProducts';
+import s from './MobileFormDiary.module.scss';
+import { changeFilter } from '../../../redux/categories/categories-slice';
+import {
+  getAllCategories,
+  getData,
+} from '../../../redux/categories/categories-selectors';
+import { addProduct } from '../../../redux/products/products-operations';
+import { allCategories } from '../../../redux/categories/categories-operations';
 
-import 'react-datepicker/dist/react-datepicker.css';
-import s from './DiaryAddProductForm.module.scss';
-
-import sprite from '../../assets/images/symbol-defs.svg';
-
-import { getAllCategories } from '../../redux/categories/categories-selectors';
-import HelperListProducts from '../common/HelperListProducts/HelperListProducts';
-import { addProduct } from '../../redux/products/products-operations';
-
-const DiaryAddProductForm = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const MobileFormDiary = () => {
+  const dispatch = useDispatch();
   const [gram, setGram] = useState('');
   const [search, setSearch] = useState('');
-  const dispatch = useDispatch();
   const productList = useSelector(getAllCategories);
+  const startDate = useSelector(getData);
 
-  useEffect(() => {}, [productList]);
+  useEffect(() => {
+    dispatch(allCategories());
+  }, [dispatch]);
 
   const getInfoOnChoice = () => {
-    const getInf = find(productList, el => el.title.ua === search);
+    const getInf = find(productList, item => item.title.ua === search);
     return getInf;
   };
 
@@ -41,15 +39,16 @@ const DiaryAddProductForm = () => {
   const addProductFromTheForm = async () => {
     const inf = await getInfoOnChoice();
     const body = {
-      date: format(startDate, 'yyyyMMdd'),
-      product: {
-        weight: +gram,
-        title: inf.title,
-        calories: (Number(gram) / 100) * inf.calories,
-      },
+      categories: inf.categories,
+      weight: +gram,
+      title: inf.title,
+      calories: (Number(gram) / 100) * inf.calories,
+      groupBloodNotAllowed: inf.groupBloodNotAllowed,
+      date: startDate,
     };
+    console.log('~ body', body);
     dispatch(addProduct(body));
-    setSearch('');
+    dispatch(changeFilter(''));
     setGram('');
     startDate(new Date());
   };
@@ -66,37 +65,22 @@ const DiaryAddProductForm = () => {
         />
       )}
       <Formik
-        initialValues={{ products: search, datapicker: startDate, gram }}
+        initialValues={{ search, gram }}
         onSubmit={() => addProductFromTheForm()}
       >
         {({ handleChange }) => (
           <Form className={s.diaryForm}>
-            <div className={s.fields__cover}>
-              <DatePicker
-                dateFormat="dd.MM.yyyy"
-                closeOnScroll={true}
-                maxDate={new Date()}
-                name="datapicker"
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-                className={s.diaryForm__dataPicker}
-              />
-              <svg width="20" height="20" className={s.diaryForm__icon}>
-                <use href={`${sprite}#icon-calendar`}></use>
-              </svg>
-            </div>
-
             <div className={s.diaryForm__cover}>
               <label className={s.diaryForm__label}>
                 <p className={s.diaryForm__text}>Enter product name</p>
                 <Field
-                  id="product"
-                  name="products"
+                  id="search"
+                  name="search"
                   as="input"
                   value={search}
                   onChange={e => {
                     handleChange(e);
-                    setSearch(e.target.value);
+                    return setSearch(e.target.value);
                   }}
                   className={s.diaryForm__fields}
                 ></Field>
@@ -119,7 +103,7 @@ const DiaryAddProductForm = () => {
                 />
               </label>
               <button className={s.diaryForm__btn} type="submit">
-                <span className={s.diaryForm__btn_plus}>+</span>
+                Add
               </button>
             </div>
           </Form>
@@ -129,4 +113,4 @@ const DiaryAddProductForm = () => {
   );
 };
 
-export default DiaryAddProductForm;
+export default MobileFormDiary;

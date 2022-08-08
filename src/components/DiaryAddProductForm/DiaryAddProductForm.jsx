@@ -4,18 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { find, filter } from 'lodash';
 // import Moment from 'moment';
-import { format } from "date-fns";
+import { format } from 'date-fns';
 // import { uk } from "date-fns/locale";
-
 
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './DiaryAddProductForm.module.scss';
 
 import sprite from '../../assets/images/symbol-defs.svg';
 
-import {
-  getAllCategories,
-} from '../../redux/categories/categories-selectors';
+import { getAllCategories } from '../../redux/categories/categories-selectors';
 import HelperListProducts from '../common/HelperListProducts/HelperListProducts';
 import { addProduct } from '../../redux/products/products-operations';
 
@@ -26,10 +23,7 @@ const DiaryAddProductForm = () => {
   const dispatch = useDispatch();
   const productList = useSelector(getAllCategories);
 
-
-  useEffect(()=>{
-  },[productList])
-
+  useEffect(() => {}, [productList]);
 
   const getInfoOnChoice = () => {
     const getInf = find(productList, el => el.title.ua === search);
@@ -47,25 +41,30 @@ const DiaryAddProductForm = () => {
   const addProductFromTheForm = async () => {
     const inf = await getInfoOnChoice();
     const body = {
-      date: format(startDate, "yyyyMMdd"),
-    product: {
-      weight: +gram,
-      title: inf.title,
-      calories: (Number(gram) / 100) * inf.calories,
-    },
-  };
+      date: format(startDate, 'yyyyMMdd'),
+      product: {
+        weight: +gram,
+        title: inf.title,
+        calories: (Number(gram) / 100) * inf.calories,
+      },
+    };
     dispatch(addProduct(body));
-    setSearch('')
+    setSearch('');
     setGram('');
     startDate(new Date());
   };
 
   const checkIsMount =
-    !!checkProduct() && search !=='' && checkProduct() !== 1;
+    !!checkProduct() && search !== '' && checkProduct() !== 1;
 
   return (
     <div className={s.diary}>
-      {checkIsMount && <HelperListProducts search={search} setSearch={(text)=>setSearch(text)}/>}
+      {checkIsMount && (
+        <HelperListProducts
+          search={search}
+          setSearch={text => setSearch(text)}
+        />
+      )}
       <Formik
         initialValues={{ products: search, datapicker: startDate, gram }}
         onSubmit={() => addProductFromTheForm()}

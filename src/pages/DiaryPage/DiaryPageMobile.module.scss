@@ -5,11 +5,13 @@
   align-items: center;
 }
 
-.diaryFormMob {
-  position: relative;
-  margin-top: 80px;
-  margin-bottom: 32px;
-
+.fields {
+  &__cover {
+    position: relative;
+    margin-top: 80px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
   &__dataPicker {
     font-weight: 700;
     font-size: 18px;
@@ -26,7 +28,6 @@
     left: 70%;
     pointer-events: none;
   }
-
   &__btn {
     position: relative;
     padding: 18px 18px;
@@ -51,8 +52,4 @@
       color: #000000;
     }
   }
-}
-
-.fields__cover {
-  text-align: center;
 }

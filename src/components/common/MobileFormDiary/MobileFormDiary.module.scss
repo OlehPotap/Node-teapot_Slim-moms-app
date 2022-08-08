@@ -1,0 +1,73 @@
+.diary {
+  position: relative;
+  margin-top: 80px;
+}
+
+.diaryForm {
+  &__dataPicker {
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 41px;
+    width: 37%;
+    margin-bottom: 60px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    @media screen and (min-width: 1268px) {
+      width: 23%;
+    }
+  }
+  &__cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__label {
+    width: 100%;
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #9b9faa;
+  }
+
+  &__fields {
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    appearance: none;
+    outline: none;
+    width: 100%;
+  }
+
+  &__gram {
+    width: 100%;
+  }
+
+  &__btn {
+    margin-top: 60px;
+    outline: none;
+    border: 2px solid #fc842d;
+    padding: 13px 46px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    color: #ffffff;
+    background-color: #fc842d;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: #000000;
+    }
+  }
+}

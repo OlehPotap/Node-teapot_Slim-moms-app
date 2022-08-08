@@ -31,8 +31,13 @@ const logout = async () => {
 };
 
 const getCurrent = async token => {
-  // addToken(token);
+  addToken(token);
   const { data: result } = await axios.get('/users/current');
+  return result;
+};
+
+const updateUserInfo =  async userInfo => {
+  const { data: result } = await axios.patch('/users/updateUserInfo', userInfo);
   return result;
 };
 
@@ -41,6 +46,7 @@ const authAPI = {
   login,
   logout,
   getCurrent,
+  updateUserInfo
 };
 
 export default authAPI;

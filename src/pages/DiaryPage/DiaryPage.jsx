@@ -4,19 +4,25 @@ import Container from '../../components/common/Container';
 import PrivatePagesBG from '../../components/PrivatePagesBG';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm/DiaryAddProductForm';
 import { allCategories } from '../../redux/categories/categories-operations';
+
 import DiaryProductsList from '../../components/DiaryProductsList/DiaryProductsList';
 
+import RightSideBar from '../../components/RightSideBar/RightSideBar';
+
 const DiaryPage = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(allCategories());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(allCategories());
+  // }, [dispatch]);
   return (
-    <Container>
-      <PrivatePagesBG />
-      <DiaryAddProductForm />
-      <DiaryProductsList />
-    </Container>
+    <>
+      <Container>
+        <PrivatePagesBG />
+        <DiaryAddProductForm />
+        <DiaryProductsList />
+      </Container>
+      <RightSideBar />
+    </>
     // <section className={s.diarySection}>
     //   {state && (
     //     <DiaryAddProductFormModal closeModal={closeModal}>

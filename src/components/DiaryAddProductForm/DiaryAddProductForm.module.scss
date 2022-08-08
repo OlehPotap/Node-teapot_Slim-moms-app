@@ -5,14 +5,17 @@
 
 .diaryForm {
   &__dataPicker {
-    width: 20%;
     font-weight: 700;
     font-size: 34px;
     line-height: 41px;
+    width: 37%;
+    margin-bottom: 60px;
     border: none;
     outline: none;
     cursor: pointer;
-    margin-bottom: 60px;
+    @media screen and (min-width: 1268px) {
+      width: 23%;
+    }
   }
   .fields__cover {
     position: relative;
@@ -20,9 +23,13 @@
 
   &__icon {
     position: absolute;
-    top: 11%;
-    left: 18%;
+    top: 12%;
+    left: 32%;
     pointer-events: none;
+    @media screen and (min-width: 1268px) {
+      top: 10%;
+      left: 20%;
+    }
   }
 
   &__cover {

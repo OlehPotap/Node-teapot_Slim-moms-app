@@ -1,19 +1,22 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import Container from '../../components/common/Container';
 import PrivatePagesBG from '../../components/PrivatePagesBG';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm/DiaryAddProductForm';
+import DiaryPageMobile from './DiaryPageMobile';
 import { allCategories } from '../../redux/categories/categories-operations';
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
   useEffect(() => {
     dispatch(allCategories());
   }, [dispatch]);
   return (
     <Container>
       <PrivatePagesBG />
-      <DiaryAddProductForm />
+      {isMobile ? <DiaryPageMobile /> : <DiaryAddProductForm />}
     </Container>
     // <section className={s.diarySection}>
     //   {state && (

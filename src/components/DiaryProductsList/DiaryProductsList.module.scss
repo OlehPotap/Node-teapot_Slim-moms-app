@@ -1,0 +1,46 @@
+@import '../../assets/sass/common';
+@import '../../assets/sass/rootColors';
+@import '../../assets/sass/mixins';
+@import '../../assets/sass/stylesheet';
+
+.products {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  padding-left: 20px;
+  padding-right: 11px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+  @include mq(tablet) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 60px;
+    width: 610px;
+  }
+  @include mq(desktop) {
+    justify-content: flex-start;
+    width: 670px;
+  }
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f0f1f3;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #264061;
+    border-radius: 2px;
+  }
+}
+
+.list {
+  height: 250px;
+
+  @include mq(tablet) {
+    height: 245px;
+  }
+  @include mq(desktop) {
+    height: 270px;
+  }
+}

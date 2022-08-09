@@ -8,7 +8,7 @@ export const signup = createAsyncThunk(
     try {
       return await authAPI.signup(userData);
     } catch (error) {
-      thunkApi.rejectWithValue(error.request.status);
+     return thunkApi.rejectWithValue(error.request.status);
       
     }
 });

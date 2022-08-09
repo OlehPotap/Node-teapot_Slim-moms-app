@@ -14,7 +14,9 @@ const DiaryProductsList = () => {
   const date = location.search?.split('=')[1];
   useEffect(() => {
     if (date) {
-      dispatch(getDailyProducts(date));
+      setTimeout(() => {
+        dispatch(getDailyProducts(date));
+      }, 0);
     } // eslint-disable-next-line
   }, [location, dispatch]);
 

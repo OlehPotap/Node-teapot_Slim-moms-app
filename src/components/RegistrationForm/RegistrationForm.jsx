@@ -11,10 +11,21 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
 
+  // /^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "
+
   const schema = Yup.object().shape({
-    name: Yup.string().trim().max(40).required(),
+    name: Yup.string()
+      .trim()
+      .matches(/(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{4,}/g)
+      .max(40)
+      .required(),
     email: Yup.string().trim().email().max(40).required(),
-    password: Yup.string().trim().min(8).max(20).matches(/^\S*$/).required(),
+    password: Yup.string()
+      .trim()
+      .min(8)
+      .max(20)
+      .matches(/(?=.*[a-z])[0-9a-zA-Z]{8,}/g)
+      .required(),
   });
 
   return (
@@ -23,7 +34,7 @@ const RegistrationForm = () => {
       <Formik
         initialValues={{ name: '', email: '', password: '' }}
         validationSchema={schema}
-        onSubmit={({name, email, password}) => {
+        onSubmit={({ name, email, password }) => {
           dispatch(signup({ name, email, password }));
         }}
       >

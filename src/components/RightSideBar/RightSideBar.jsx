@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { format } from 'date-fns';
 import s from './RightSideBar.module.scss';
 import { useSelector } from 'react-redux';
 import { getUser } from '../../redux/auth/auth-selectors';
-import { geAllDailyProducts, getCaloriesReceived } from '../../redux/products/products-selectors';
+import { getCaloriesReceived } from '../../redux/products/products-selectors';
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+
 
 const RightSideBar = () => {
-  // const dailyProducts = useSelector(geAllDailyProducts);
-  // const [leftCalories, setLeftCalories] = useState(0)
   const location = useLocation();
   const locationDate = location.search?.split('=')[1];
   const formatedDate = `${locationDate?.slice(4,6)}/${locationDate?.slice(6,8)}/${locationDate?.slice(0,4)}`

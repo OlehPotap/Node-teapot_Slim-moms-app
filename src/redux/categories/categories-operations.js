@@ -22,7 +22,6 @@ export const getForbidenCategories = createAsyncThunk(
       const filteredArr = CategoriesList?.filter(el => {
         return el.groupBloodNotAllowed[Number(values.bloodType)];
       });
-      console.log(filteredArr)
       const newCategories = filteredArr.map(el =>
         el.categories.find(el => {
           return el;

@@ -19,9 +19,11 @@ const signup = async owner => {
 };
 
 const login = async owner => {
-  const { data } = await axios.post('/users/login', owner);
-  addToken(data.token);
-  return data;
+
+    const data  = await axios.post('/users/login', owner);
+    addToken(data.data.token);
+    return data;
+ 
 };
 
 const logout = async () => {

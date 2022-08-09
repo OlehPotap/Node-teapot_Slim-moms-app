@@ -36,6 +36,7 @@ const categoriesReducer = createSlice({
       state.error = null;
     },
     [getForbidenCategories.fulfilled]: (state, { payload }) => {
+      // console.log(payload)
       state.categories = [...payload];
       state.loading = false;
       state.error = null;

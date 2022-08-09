@@ -16,7 +16,7 @@ const DiaryProductsList = () => {
     if (date) {
       setTimeout(() => {
         dispatch(getDailyProducts(date));
-      }, 0);
+      }, 1000);
     } // eslint-disable-next-line
   }, [location, dispatch]);
 

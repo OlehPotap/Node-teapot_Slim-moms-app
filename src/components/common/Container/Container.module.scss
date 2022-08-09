@@ -3,10 +3,10 @@
 .container {
   @include mq(tablet) {
     position: relative;
-    width: 768px;
+    max-width: 768px;
     // margin: 0 auto;
   }
   @include mq(desktop) {
-    width: 1280px;
+    max-width: 1280px;
   }
 }

@@ -3,6 +3,7 @@
 .container {
   margin: 0;
   background-color: #fc842d;
+  padding-bottom: 60px;
 }
 .section {
   display: flex;
@@ -11,6 +12,7 @@
   margin-top: 32px;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 30px;
 
   @include mq(tablet) {
     margin-top: 100px;
@@ -169,14 +171,14 @@
     border-radius: 30px;
   }
   @include mq(tablet) {
-    position: absolute;
-    left: 0;
-    bottom: -95px;
-    margin-top: 0;
+    // position: absolute;
+    // left: 0;
+    // bottom: -95px;
+    margin-top: 60px;
   }
 
   @include mq(desktop) {
-    left: 300px;
+    margin-left: 300px;
   }
 }
 

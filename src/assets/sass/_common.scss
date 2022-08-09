@@ -1,3 +1,7 @@
+// * {
+//   outline: 1px solid red;
+// }
+
 body {
   font-family: 'Verdana', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -5,6 +9,7 @@ body {
   font-weight: 700;
   font-size: 14px;
   line-height: 1.21;
+  height: 100vh;
 }
 
 ul, li {

@@ -39,10 +39,10 @@ const CalculatorCalorieForm = () => {
       </h1>
       <Formik
         initialValues={{
-          height: '180',
-          desiredWeight: '66',
-          age: '22',
-          currentWeight: '77',
+          height: '',
+          desiredWeight: '',
+          age: '',
+          currentWeight: '',
           bloodType: '',
         }}
         validationSchema={schema}
@@ -182,18 +182,18 @@ const CalculatorCalorieForm = () => {
                   />{' '}
                   <span> 4</span>
                 </label>
-              </div>
-              <ErrorMessage
+                <ErrorMessage
                 name="bloodType"
                 render={err => {
                   return <p>{err}</p>;
                 }}
               />
+              </div>
             </div>
-            <button className={s.submitButton} type="submit">
+          </div>
+          <button className={s.submitButton} type="submit">
               Start losing weight
             </button>
-          </div>
         </Form>
       </Formik>
       {modalOpen && <Modal handleClose={ShowModal} givenCalories={calories} />}

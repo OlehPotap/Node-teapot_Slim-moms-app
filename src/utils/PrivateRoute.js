@@ -7,7 +7,7 @@ const PublicRoute = ()=> {
     const isLogin = CheckAuth();
 
     if(isLogin) {
-        return <Navigate to="/diary" />
+        return <Navigate to="/calculator" />
     }
     return <Outlet />
 };

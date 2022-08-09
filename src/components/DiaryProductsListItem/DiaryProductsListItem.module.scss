@@ -21,29 +21,31 @@
 }
 
 .product {
-  min-width: 130px;
+  width: 130px;
   @include mq(tablet) {
-    min-width: 240px;
+    width: 240px;
   }
   @include mq(desktop) {
   }
 }
 
 .weight {
-  min-width: 49px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 49px;
   @include mq(tablet) {
-    min-width: 106px;
-  }
-  @include mq(desktop) {
+    width: 106px;
   }
 }
 
 .calories {
-  min-width: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 60px;
   @include mq(tablet) {
-    min-width: 106px;
-  }
-  @include mq(desktop) {
+    width: 106px;
   }
 }
 
@@ -54,14 +56,8 @@
     width: 12px;
     height: 12px;
   }
-  @include mq(desktop) {
-  }
 }
 
 .btn {
   margin-left: 9px;
-  @include mq(tablet) {
-  }
-  @include mq(desktop) {
-  }
 }

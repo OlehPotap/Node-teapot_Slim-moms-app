@@ -13,7 +13,7 @@ export const LoginForm = () => {
 
   const schema = Yup.object().shape({
     email: Yup.string().trim().email().max(40).required(),
-    password: Yup.string().trim().min(8).max(20).matches(/^\S*$/).required(),
+    password: Yup.string().trim().min(8).max(20).matches(/[0-9a-zA-Z]{8,}/g).required(),
   });
 
   return (

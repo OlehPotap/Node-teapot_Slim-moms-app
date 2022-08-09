@@ -2,15 +2,16 @@ import s from './CalculatorCalorieForm.module.scss';
 import Loader from '../../components/common/Loader/Loader';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useSelector } from 'react-redux';
-import { getIsLoading, getIslogin, getUser } from '../../redux/auth/auth-selectors';
+import { getIsLoading, getIslogin } from '../../redux/auth/auth-selectors';
 import * as Yup from 'yup';
 import Modal from '../Modal';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import {dailyUserInfo} from '../../redux/auth/auth-operations'
-import { getForbidenCategories, } from '../../redux/categories/categories-operations';
+import { getForbidenCategories,} from '../../redux/categories/categories-operations';
 
 const CalculatorCalorieForm = () => {
+   // const givenProducts = useSelector(getForbidenCategories);
   const dispatch = useDispatch();
   const isLogin = useSelector(getIslogin);
   const isLoading = useSelector(getIsLoading);
@@ -27,6 +28,8 @@ const CalculatorCalorieForm = () => {
     currentWeight: Yup.number().required().min(40),
     bloodType: Yup.string().required(),
   });
+
+  // console.log(isLogin)
 
   return (
     <div className={s.section}>
@@ -53,6 +56,7 @@ const CalculatorCalorieForm = () => {
           setCalories(calcCalories);
           if (!isLogin) {
             dispatch(getForbidenCategories(values));
+            
             ShowModal();
           } else {
             dispatch(dailyUserInfo({userInfo: values}));

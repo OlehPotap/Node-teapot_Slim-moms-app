@@ -26,9 +26,9 @@ const authSlice = createSlice({
     },
     [signup.fulfilled]: (state, { payload }) => {
       state.user = { ...payload.user };
-      // state.token = payload.token;
+      state.token = payload.token;
       state.loading = false;
-      // state.isLogin = true;
+      state.isLogin = true;
     },
     [signup.rejected]: (state, { payload }) => {
       state.loading = false;

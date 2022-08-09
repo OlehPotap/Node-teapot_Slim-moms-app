@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import authAPI from '../../shared/api/authApi';
 
@@ -8,7 +9,8 @@ export const signup = createAsyncThunk(
     try {
       return await authAPI.signup(userData);
     } catch (error) {
-      thunkApi.rejectWithValue(error.request.status);
+      Notify.failure(error.response?.data?.message);
+      return thunkApi.rejectWithValue(error.response?.data?.message);
       
     }
 });
@@ -17,9 +19,11 @@ export const login = createAsyncThunk(
   'auth/login',
   async (userData, thunkApi) => {
     try {
-      return await authAPI.login(userData);
+      const {data} = await authAPI.login(userData);
+      return data
     } catch (error) {
-      return thunkApi.rejectWithValue(error.request.status);
+      Notify.failure(error.response?.data?.message);
+      return thunkApi.rejectWithValue(error.response?.data?.message);
     }
   }
 );
@@ -27,8 +31,8 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
     return await authAPI.logout();
-  } catch (error) {
-   return thunkApi.rejectWithValue(error.message);
+  } catch (error) {Notify.failure(error.response?.data?.message);
+    return thunkApi.rejectWithValue(error.response?.data?.message);
   }
 });
 
@@ -38,7 +42,8 @@ export const current = createAsyncThunk('auth/current', async (_, thunkApi) => {
     const user = await authAPI.getCurrent(token);
     return user
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+    Notify.failure(error.response?.data?.message);
+    return thunkApi.rejectWithValue(error.response?.data?.message);
   }
 });
 
@@ -48,6 +53,7 @@ export const dailyUserInfo = createAsyncThunk('auth/dailyUserInfo', async (userI
     
     return currentUserInfo
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+    console.log(`UserInfo`, error.response?.data?.message)
+    return thunkApi.rejectWithValue(error.response?.data?.message);
   }
 });

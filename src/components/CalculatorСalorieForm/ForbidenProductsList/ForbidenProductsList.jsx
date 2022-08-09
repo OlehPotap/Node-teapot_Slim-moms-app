@@ -6,8 +6,7 @@ import k from './ForbidenProductsList.module.scss';
 
 const ForbidenProductsList = () => {
   const givenProducts = useSelector(getForbidenCategories);
-
-  const List = givenProducts?.map(el => {
+  const List = givenProducts.length < 5 && givenProducts?.map(el => {
     return <FrobidenProductsListItem el={el} key={uuidv4()} />;
   });
   return <ol className={k.unrec_prod_list}>{List}</ol>;

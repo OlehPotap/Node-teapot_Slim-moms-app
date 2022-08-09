@@ -33,7 +33,7 @@ function useWindowDimensions() {
 
 const modalRoot = document.getElementById('modal-root');
 
-const Modal = ({ handleClose, children, givenCalories, givenProducts }) => {
+const Modal = ({ handleClose, children, givenCalories }) => {
   useEffect(() => {
     document.addEventListener('keydown', close);
 
@@ -80,7 +80,7 @@ const Modal = ({ handleClose, children, givenCalories, givenProducts }) => {
             <span className={s.horizontal_line}></span>
             <h3 className={s.products_header}>Foods you should not eat</h3>
             {/* <ol className={s.list_set}> */}
-            <FrobidenProductsList givenProducts={givenProducts} />
+            <FrobidenProductsList />
             {/* </ol> */}
             <div>
               <NavLink to="/login" exact="true" className={s.loose_weight_btn}>
